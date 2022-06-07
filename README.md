@@ -12,3 +12,5 @@ I was looking to better understand what skills where being requested of **data j
 - Data Engineering vs Data Science vs Data Analysis according to count of skills required for entry-level position.
 - Better understanding the data market (is it contracting, expanding)
 - Forecasting, if possible, the skills that will be in greater or lesser demand in the next year
+
+# 🏗 Architecture
