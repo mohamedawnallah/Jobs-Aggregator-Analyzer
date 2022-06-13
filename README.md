@@ -15,4 +15,3 @@ I was looking to better understand what skills where being requested of **data j
 
 # 🏗 Architecture
 ![Architecture](https://github.com/mhmdawnallah/Data-Jobs-Research/blob/main/static/images/Architecture.png)
-s
