@@ -1,5 +1,5 @@
 # ✨ Background
-I was looking to better understand what skills where being requested of **data jobs based on seniority level** to learn the most in-demand ones. I felt the best place to start was website jobs including Linkedin job postings, so this is my start at this project.
+I was looking to better understand what skills and expected market salary for **data jobs based on seniority level** to learn the most in-demand ones and to be fairly paid too. I felt the best places to start was website jobs including Indeed/Data Stack Jobs/Linkedin job postings, so this is my start at this project.
 
 # 🎯 End-Goals
 - Getting the latest updates of Data Engineering jobs.
