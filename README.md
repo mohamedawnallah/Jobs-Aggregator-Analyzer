@@ -18,4 +18,3 @@ I was looking to better understand what skills and expected market salary for **
 
 # 🏢 Data Warehouse
 ![Data Warehouse](https://github.com/mhmdawnallah/Data-Jobs-Research/blob/main/static/images/Data%20Warehouse.png)
-s
