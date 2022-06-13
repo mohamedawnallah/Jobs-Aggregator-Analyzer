@@ -15,3 +15,6 @@ I was looking to better understand what skills where being requested of **data j
 
 # 🏗 Architecture
 ![Architecture](https://github.com/mhmdawnallah/Data-Jobs-Research/blob/main/static/images/Architecture.png)
+
+# 🏢 Data Warehouse
+![Data Warehouse](https://github.com/mhmdawnallah/Data-Jobs-Research/blob/main/static/images/Data%20Warehouse.png)
