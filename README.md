@@ -17,4 +17,4 @@ I was looking to better understand what skills and expected market salary for **
 ![Architecture](https://github.com/mhmdawnallah/Data-Jobs-Research/blob/main/static/images/Architecture.png)
 
 # 🏢 Data Warehouse
-![Data Warehouse](https://github.com/mhmdawnallah/Data-Jobs-Research/blob/main/static/images/Architecture.png)
+![Data Warehouse](https://github.com/mhmdawnallah/Data-Jobs-Research/blob/main/static/images/Data%20Warehouse.png)
