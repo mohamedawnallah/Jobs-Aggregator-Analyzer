@@ -14,4 +14,7 @@ I was looking to better understand what skills where being requested of **data j
 - Forecasting, if possible, the skills that will be in greater or lesser demand in the next year
 
 # 🏗 Architecture
-![Architecture](https://github.com/mhmdawnallah/Data-Jobs-Research/blob/feature/static/images/Architecture.png)
+![Architecture](https://github.com/mhmdawnallah/Data-Jobs-Research/blob/feature/app/src/static/images/Architecture.png)
+
+# 🏢 Data Warehouse
+![Data Warehouse](https://github.com/mhmdawnallah/Data-Jobs-Research/blob/feature/app/src/static/images/Data%20Warehouse.png)
