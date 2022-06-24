@@ -1,0 +1,108 @@
+
+[indeed]
+indeed_website = "http://www.indeed.com"
+# Indeed uses subdomains(country_code) to get job listings except United States uses (wwww) instead
+jobs_base_url = "https://%(country_code)s.indeed.com/jobs?q=%(job_title)s" 
+job_base_url = "https://www.indeed.com/%(job_id)s"
+company_base_url = "https://www.indeed.com/cmp/%(company_name)s"
+
+#Countries supported by Indeed: https://www.indeed.com/worldwide
+countries_base_url = "https://www.indeed.com/worldwide"
+
+[company]
+company_name = ''
+company_website = ''
+company_location = ''
+company_rating = ''
+country = ''
+
+[job]
+
+[job.basic_info]
+job_title = ''
+job_description = ''
+job_link = ''
+job_salary = ''
+posted_date = ''
+
+[job.additional_info]
+degree_needed = ''
+benefits = ''
+
+[data_engineering_skills]
+programming_languages = ['java','c++','python','ruby','scala']
+
+db_engines = ['oracle','mysql','microsoft sql server','postgresql','mongodb',
+              'redis','ibm db2','elasticsearch','microsoft access','sqlite']
+
+sql_and_no_sql = ['sql','nosql']
+
+ingest_sass = ['stich','airbyte','fivetran','segment','rivery',
+               'dataddo','datacoral','matillion','snowplow']
+
+ingest_tech = ['google cloud pub/sub','apache storm','flink','amazon kinesis',
+               'beam','materialize','kafka','beneath','apache spark','upsolver','confluent']
+
+object_storage = ['ibm cloud object storage','wasabi',
+                  'seagate','minio','alibaba cloud','google cloud storage','zadara',
+                  'hadoop','oracle cloud','amazon s3','firebase','cloudfiles',
+                  'digitalocean','crowdstorage','swiftstack','lyve','ceph','purestorage'
+                 ]
+cloud_providers = ['aws','azure','google cloud','alibaba cloud','ibm cloud','salesforce',
+                   'tencent cloud', 'oracle cloud']
+
+metastore = ['hive','cloud dataproc','amazon glue','azure purview',
+             'unity','cloudera','databricks']
+
+open_table_formats = ['apache hudi','onehouse','iceberg','tabular','delta lake','databricks',
+                      'delta lake', 'apache orc']
+
+compute = ['databricks','ray','cloudwick','hadoop mapreduce','cloud Dataproc',
+           'azure hdinsight','akka platform','dask','ascend.io'
+          ]
+
+analytics_engine = ['databricks','snowflake','dremio','amazon athena',
+                    'startree','pentaho','qubole','clickhouse','druid',
+                    'firebolt','starburst','google big query','amazon redshift',
+                    'pinot','cloudera impala'
+                    ]
+
+data_viz_tools = ['tableau', 'power bi','excel', 'ibm_watson']
+    
+git_for_data = ['lakefs','project nessie']
+
+orcherstration = ['airflow','flyte','oozie','dagster','astronomer']
+
+mlops_end_to_end = ['google colab','octoml','abacus.ai','metaflow',
+                    'disdat','verta','cnvrg.io','mlflow','snorkel',
+                    'seldon','hugging face', 'datarobot','vertex.ai',
+                    'w&b','hobsworks','kubeflow','google data studio',
+                    'clear|ml','valohai','neptune.ai','domino',
+                    'amazon segemaker','floydhub','iguazio','hydrosphere.io',
+                    'zenlml','michelangelo','kedro','comet','h2o.io'
+                    ]
+
+data_centric_ai_ml = ['graviti','activeloop','DAGsHub','DVC','Pachyderm']
+
+analytics_workflow = ['dataform','dbt','querybook','databricks']
+
+ml_observability = ['deep checks','mona','superwise','fiddler','arize',
+                    'whylabs','arthur','galileo','robust intelligence',
+                    'gantry','tuera'
+                    ]
+
+notebooks = ['jupyter','hex','apache zeppelin','deepnote','count','noteable']
+
+feature_stores = ['tecton','feast','ragso','vertex.ai','hopsworks','scribbledata',
+                  'molecula','kaskada']
+
+discovery_governance = ['marquez','bigid','collibra','magda',
+                        'apache atlas','meta','amundsen','okera',
+                        'alation','data.world','ckan','metacat','amazon glue',
+                        'ckan','immuta','atlan','datahub','ibm watson']
+
+devops = ['git','github','bitbucket','gitlab','docker','jenkins','kubernetes',
+          'ansible','terraform','maven','chef','gradle','jira','puppet','saltstack',
+          'junit']
+automation = ['katalon studio','selenium','uft one','soap ui','testcomplete',
+              'cucumber']
