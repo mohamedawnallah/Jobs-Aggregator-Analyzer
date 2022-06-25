@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_script:
+  - docker build -t mohamedawni/data-research-jobs-test -f Dockerfile.dev . 
+
+script:
+  - docker run -e CI=true mohamedawni/data-research-jobs-test npm run test 
