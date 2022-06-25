@@ -18,17 +18,17 @@ def test_get_valid_value():
     """Test valid value is returned"""
     assert Utils.get_valid_value(None) == 'N/A'
 
-def test_word_is_found():
+def test_words_are_found():
     """Test is_word_found"""
     search_words = ['Bachelor']
     text = 'bachelor'
-    assert Utils.is_word_found(search_words, text) is True
+    assert Utils.are_words_found(search_words, text) is True
 
-def test_word_is_not_found():
+def test_words_are_not_found():
     """Test word is not found"""
     search_words = ['Bachelor']
     text = 'High School'
-    assert Utils.is_word_found(search_words, text) is False
+    assert Utils.are_words_found(search_words, text) is False
 
 def test_needs_cs_degree():
     """Test check_degree"""

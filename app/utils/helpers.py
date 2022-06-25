@@ -59,13 +59,13 @@ class Utils(DegreeChecker):
     @staticmethod
     def check_degree(degree_filter:list[str] , text:str) -> bool:
         """Check if job needs computer science degree (as long as) our main concern now is in Data/SE jobs"""
-        if Utils.is_word_found(degree_filter, text):
+        if Utils.are_words_found(degree_filter, text):
             return True
         return False
 
 
     @staticmethod
-    def is_word_found(search_words: list[str], text):
+    def are_words_found(search_words: list[str], text):
         """Check if the whole word is found in the given text"""
         matched = False
         for search_word in search_words:    
@@ -84,7 +84,7 @@ class Utils(DegreeChecker):
 
         for key,values in job_skills_config.items():
             for value in values:
-                if Utils.is_word_found([value],root_info_data):
+                if Utils.are_words_found([value],root_info_data):
                     job_skills_dict[key] += value + ', '
                 
             if key not in job_skills_dict:
