@@ -5,12 +5,13 @@ name = "pypi"
 
 [packages]
 toml = "*"
+beautifulsoup4 = "*"
+requests = "*"
 
 [dev-packages]
 pytest = "*"
-toml = "*"
-beautifulsoup4 = "*"
-requests = "*"
+flake8 = "*"
+pytest-rerunfailures="*"
 
 [requires]
 python_version = "3.9"

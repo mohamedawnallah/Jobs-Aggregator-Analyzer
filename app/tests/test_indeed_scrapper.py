@@ -1,21 +1,18 @@
+""" Test Indeed Scrapper Module
 
-import sys
+This module tests all the functionalities of the IndeedScrapper class.
+"""
 import os
 from typing import Generator
-
-# append the src parent directory to sys path
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import pytest
-import toml
 from scrappers.indeed_scrapper import IndeedScrapper
-from utils.constants import CONFIGS_PATH
 from utils.helpers import InvalidUrlError
 from utils.helpers import Utils
 
 @pytest.fixture
 def configs() -> dict:
     """Fixture for configs"""
-    return toml.load(CONFIGS_PATH)
+    return Utils.get_configs("settings/configs.toml")
 
 @pytest.fixture
 def indeed_scrapper(configs):
@@ -50,29 +47,27 @@ def test_get_invalid_results_job_cards_col(indeed_scrapper: IndeedScrapper):
     with pytest.raises(InvalidUrlError):
         indeed_scrapper.get_results_job_cards_col(invalid_job_url)
 
-def test_get_jobs_countries(indeed_scrapper: IndeedScrapper):
-    countries_input = {'United States':'www'}
-    job_title_input = 'Data Engineer'
-    pages_no = 1
-
-    jobs_countries = indeed_scrapper.get_jobs_countries(countries_input,job_title_input,pages_no)
-        
+dummy_data = [('data engineer',{"United States":'www'},1)]
+@pytest.mark.parametrize('job_title,countries,pages_no',dummy_data)
+def test_get_jobs_countries(indeed_scrapper: IndeedScrapper, job_title: str,
+                            countries: dict, pages_no: int):
+    """Test Jobs Countries are returned"""
+    jobs_countries = indeed_scrapper.get_jobs_countries(countries,job_title,pages_no)
     assert isinstance(jobs_countries, Generator)
-    first_job_country = next(next(jobs_countries))
-    assert isinstance(first_job_country, dict)
+    assert isinstance(next(next(jobs_countries)), dict)
 
-def test_write_to_csv(indeed_scrapper,configs: dict):
+
+@pytest.mark.parametrize('job_title,countries,pages_no',dummy_data)
+def test_write_to_csv(indeed_scrapper: IndeedScrapper, configs: dict,
+                      job_title: str, countries: dict, pages_no: int):
     """Test write_to_csv"""
-    countries_input = {'United States':'www'}
-    job_title_input = 'Data Engineer'
-    pages_no = 1
-    jobs_countries_gen = indeed_scrapper.get_jobs_countries(countries_input,job_title_input,pages_no)
+    jobs_countries = indeed_scrapper.get_jobs_countries(countries,job_title,pages_no)
     csv_file_path = 'tests/resources/test_indeed_scrapper.csv'
     skills_config_name = 'data_engineering_skills'
     csv_header = Utils.get_csv_header(configs,skills_config_name)
-    IndeedScrapper.write_to_csv(csv_file_path,jobs_countries_gen,csv_header)
-    #check that file generated at tests/resources/test_indeed_scrapper.csv
+    IndeedScrapper.write_to_csv(csv_file_path,jobs_countries,csv_header)
+    
     assert os.path.exists(csv_file_path)
 
 if __name__ == '__main__':
-    pytest.main()
+    pass

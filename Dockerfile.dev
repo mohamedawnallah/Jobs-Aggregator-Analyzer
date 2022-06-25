@@ -20,7 +20,9 @@ COPY ./Pipfile.lock /app
 
 # Ignore Pipfile when installing, using the Pipfile.lock
 RUN pip install pipenv
-RUN pipenv install --ignore-pipfile --system
+RUN pipenv install --ignore-pipfile --dev --system
 
 # Transfering the code to the container
 COPY ./app /app
+
+CMD ["pytest", "-v", "--reruns", "5", "--reruns-delay", "1"]

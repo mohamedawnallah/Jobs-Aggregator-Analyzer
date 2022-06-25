@@ -1,27 +1,18 @@
+""" Test Utils module 
 
-import sys
+Testing all the static methods of Utils class that are reused in other modules.
+"""
 import os
-import itertools
-import json
-from typing import Type
-
-
-# append the src parent directory to sys path
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-
 import pytest
-import toml
 import requests
 from bs4 import BeautifulSoup
 from utils.helpers import Utils
-from utils.constants import CONFIGS_PATH
-from utils.helpers import CSVHeaderError,InvalidUrlError
+from utils.helpers import CSVHeaderError, InvalidUrlError
 
 @pytest.fixture
 def configs() -> dict:
     """Fixture for configs"""
-    return toml.load(CONFIGS_PATH)
+    return Utils.get_configs("settings/configs.toml")
 
 def test_get_valid_value():
     """Test valid value is returned"""
@@ -53,7 +44,6 @@ def test_does_not_need_cs_degree():
 
 def test_get_matched_skills(configs):
     """Test get_matched_skills"""
-
     root_info_data = 'data engineering needs apache airflow and python'
     job_skills_config = configs['data_engineering_skills']
     matched_skills: dict = Utils.get_matched_skills(job_skills_config, root_info_data) 
@@ -109,4 +99,4 @@ def test_get_invalid_value_key_from_dict():
     assert values is None
 
 if __name__ == '__main__':
-    pytest.main()
+    pass

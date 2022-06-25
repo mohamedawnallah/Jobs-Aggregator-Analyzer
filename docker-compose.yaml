@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  app:
+    image: data-research-jobs:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./app:/app
+  tests:
+    image: data-research-jobs-tests:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./app:/app
+    command: ["pytest", "-v", "--reruns", "5", "--reruns-delay", "1"]
+
+
+

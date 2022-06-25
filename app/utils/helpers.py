@@ -1,18 +1,16 @@
+"""Helpers module needed through out the application
+
+Reusable functions that are used throughout the application from different modules
+"""
 from abc import ABC, abstractmethod
 from collections import namedtuple
 from collections import defaultdict
 from typing import Optional, Union
 import re
-import json
 import toml
 import bs4
-
-import requests
-
 from bs4 import BeautifulSoup
-from utils.constants import CONFIGS_PATH
-
-
+import requests
 class Scrapper(ABC):
     """Scrapper Abstract Class for other Web Scrappers"""
     @abstractmethod
@@ -21,7 +19,8 @@ class Scrapper(ABC):
         pass
     
     @abstractmethod
-    def get_jobs_countries(self, countries_input: dict, job_title_input: str, page_no: Optional[int] = None):
+    def get_jobs_countries(self, countries_input: dict, job_title_input: str,
+                             page_no: Optional[int] = None):
         """Get jobs depending on the website also the passed job title"""
         pass
 
@@ -45,7 +44,6 @@ class DegreeChecker(ABC):
 
 class Utils(DegreeChecker):
     """Utils Class"""
-
     @staticmethod      
     def get_valid_value(value: Union[bs4.element.Tag, str]) -> str:
         """Handling Null values in indeed jobs"""
@@ -57,12 +55,14 @@ class Utils(DegreeChecker):
             return value.text.strip()
         return value.strip()
 
+
     @staticmethod
     def check_degree(degree_filter:list[str] , text:str) -> bool:
         """Check if job needs computer science degree (as long as) our main concern now is in Data/SE jobs"""
         if Utils.is_word_found(degree_filter, text):
             return True
         return False
+
 
     @staticmethod
     def is_word_found(search_words: list[str], text):
@@ -76,6 +76,7 @@ class Utils(DegreeChecker):
                 matched = False
         return matched
     
+
     @staticmethod
     def get_matched_skills(job_skills_config: dict, root_info_data: str):
         """Match job skills mentioned with ones in config file"""
@@ -84,13 +85,13 @@ class Utils(DegreeChecker):
         for key,values in job_skills_config.items():
             for value in values:
                 if Utils.is_word_found([value],root_info_data):
-                    print(value)
                     job_skills_dict[key] += value + ', '
                 
             if key not in job_skills_dict:
                 job_skills_dict[key] = "N/A"
         
         return job_skills_dict 
+
 
     @staticmethod
     def get_page_parsed(url: str) -> BeautifulSoup:
@@ -103,70 +104,89 @@ class Utils(DegreeChecker):
         return jobs_soup
 
 
-    # def get_configs(self) -> dict:
-    #     """Get configs from config file"""
-    #     configs = toml.load(CONFIGS_PATH)
-    #     return configs
+    @staticmethod
+    def get_configs(configs_path) -> dict:
+        """Get the configs from the config file"""
+        configs = toml.load(configs_path)
+        return configs
+
+
     @staticmethod
     def get_csv_header(main_configs : dict, skills_name_config: str) -> list[str]:
         """Get csv header"""
         if not isinstance(skills_name_config, str):
-            raise CSVHeaderError("Skill name config must be a string refers to the corresponding one in the config file (skills section)")
+            raise CSVHeaderError("Skill name config must be a string refers to\
+                                  the corresponding one in the config file (skills section)")
 
-        company_info = Utils.get_value_key_attr(main_configs, 'company')
-        job_attrs_info = Utils.get_value_key_attr(main_configs, 'job')
-        job_basic_info = Utils.get_value_key_attr(job_attrs_info, 'basic_info')
-        job_additional_info = Utils.get_value_key_attr(job_attrs_info, 'additional_info')
-        job_skills = Utils.get_value_key_attr(main_configs, skills_name_config)
+        Company: namedtuple = Utils.get_cls_named_tuple(configs=main_configs, configs_key='company',
+                                                        cls_name='Company')
+        JobBasicInfo: namedtuple = Utils.get_cls_named_tuple(configs=main_configs, configs_key='job_basic_info',
+                                                             cls_name='JobBasicInfo')
+        JobAdditionalBasicInfo:  namedtuple = Utils.get_cls_named_tuple(configs=main_configs, configs_key='job_additional_basic_info',
+                                                                        cls_name='JobAdditionalBasicInfo')
+        JobSkills: namedtuple = Utils.get_cls_named_tuple(configs=main_configs, configs_key=skills_name_config,
+                                                          cls_name='JobSkills')
+        company_keys = list(Company._fields)
+        job_basic_info_keys = list(JobBasicInfo._fields)
+        job_additional_basic_info_keys = list(JobAdditionalBasicInfo._fields)
+        job_skills_keys = list(JobSkills._fields)
 
-
-        company_info_keys = list(company_info.keys())
-        job_basic_info_keys = list(job_basic_info.keys())
-        job_additional_info_keys = list(job_additional_info.keys())
-        job_skills_keys = list(job_skills.keys())
-
-        csv_header = job_basic_info_keys + job_additional_info_keys + company_info_keys + job_skills_keys
+        csv_header = job_basic_info_keys + job_additional_basic_info_keys\
+                     + company_keys + job_skills_keys
         return csv_header
+
+
+    @staticmethod
+    def get_cls_named_tuple(configs: dict,configs_key: str, cls_name: str) -> namedtuple:
+        """Get Class named tuple named tuple"""
+        if not isinstance(configs, dict):
+            raise InvalidConfigError("Configs must be a dictionary")
+
+        if not isinstance(configs_key, str):
+            raise TypeError("Configs Key must be a string")
+        
+        if not isinstance(cls_name, str):
+            raise TypeError("Class Name must be a string for the named tuple")
+
+        key_configs = dict()
+        is_job_configs = configs_key.strip().startswith('job') and configs_key.strip().endswith('info')
+
+        if not is_job_configs:
+            key_configs: dict = Utils.get_value_key_attr(configs,configs_key)
+        
+        if is_job_configs:
+            job_configs: dict = Utils.get_value_key_attr(configs,'job')
+            key_configs = Utils.get_value_key_attr(job_configs,configs_key)
+
+        keys: list = list(key_configs.keys())
+        return namedtuple(cls_name, keys)    
+
 
     @staticmethod
     def get_value_key_attr(configs_input: dict,key:str) -> dict:
         """Get values of key given key attribute from config file regards to 
         the job info, company info, data engineering skills and more"""
-        
-        if key in configs_input: return configs_input[key]
-        for k,v in configs_input.items():
-            if isinstance(v,dict):
-                return Utils.get_value_key_attr(v,key)
-
+        try:
+            if key in configs_input: return configs_input[key]
+            for k,v in configs_input.items():
+                if isinstance(v,dict):
+                    return Utils.get_value_key_attr(v,key)
+        except KeyError as key_error:
+            raise KeyError(f"Key {key} not found in config file",key_error)
 
 class InvalidUrlError(Exception):
     """Invalid Url Custom Exception"""
-    # add custom message
-    def __init__(self, message):
-        """Initialize the exception with custom message"""
-        super().__init__(message)
+    pass
+
 
 class CSVHeaderError(Exception):
     """CSV Header Custom Exception"""
-    # add custom message
-    def __init__(self, message):
-        """Initialize the exception with custom message"""
-        super().__init__(message)
+    pass    
+
+class InvalidConfigError(Exception):
+    """Invalid Config Custom Exception"""
+    pass
 
 
-configs = toml.load(CONFIGS_PATH)
-company_attrs: dict = Utils.get_value_key_attr(configs,'company')
-job_attrs: dict = Utils.get_value_key_attr(configs,'job')
-job_basic_info_attrs: dict = Utils.get_value_key_attr(job_attrs,'basic_info')
-job_additional_info_attrs: dict = Utils.get_value_key_attr(job_attrs,'additional_info')
-
-print(job_basic_info_attrs)
-company_attrs_list: list = list(company_attrs.keys())
-job_basic_info_attrs_list: list = list(job_basic_info_attrs.keys())
-job_additional_info_attrs_list: list = list(job_additional_info_attrs.keys())
-
-Company = namedtuple('Company', company_attrs_list)
-JobBasicInfo = namedtuple('JobBasicInfo', job_basic_info_attrs_list)
-JobAdditionalInfo = namedtuple('JobAdditionalInfo', job_additional_info_attrs_list)
-
-
+if __name__ == '__main__':
+    pass
