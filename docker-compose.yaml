@@ -15,6 +15,7 @@ services:
       dockerfile: Dockerfile.dev
     volumes:
       - ./app:/app
+      - ./tests:/app/tests
     command: ["pytest", "-v", "--reruns", "5", "--reruns-delay", "1"]
 
 
