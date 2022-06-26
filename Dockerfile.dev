@@ -8,8 +8,9 @@ ENV PIP_NO_CACHE_DIR 1
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# Intialize the current working directory in the container
+# Create app/tests directory and make the app's the current working directory
 WORKDIR /app
+RUN mkdir -p /app/tests
 
 # Set the PYTHONPATH to the app directory
 ENV PYTHONPATH "${PYTHONPATH}:/app/"
@@ -22,7 +23,6 @@ COPY ./Pipfile.lock /app
 RUN pip install pipenv
 RUN pipenv install --ignore-pipfile --dev --system
 
-# Transfering the code to the container
-COPY ./app /app
+COPY ./tests /app/tests
 
 CMD ["pytest", "-v", "--reruns", "5", "--reruns-delay", "1"]
