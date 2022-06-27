@@ -1,3 +1,11 @@
+"""Python script to scrape Datastackjobs.com for job postings.
+
+Datastackjobs.com is a simple job board that displays job postings around the world.
+
+This script automates the process of scraping Datastackjobs.com for job postings
+and saves the results in a CSV file(temporary).
+"""
+
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
