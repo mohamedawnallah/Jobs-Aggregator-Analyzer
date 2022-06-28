@@ -6,18 +6,11 @@ This script automates the process of scraping Datastackjobs.com for job postings
 and saves the results in a CSV file(temporary).
 """
 
-# Generate a list of job search terms?
-# How are search terms are included in URL?
-# What is the structure of the main page?
-# How are multiple pages represented in URL?
-# What HTML tags are used for job postings on the main page?
-# What HTML tags are used for different sections of the individual job posting page?
-
+import csv
+import json
 import requests
 from bs4 import BeautifulSoup
-import json
-from html_tags import *
-import csv
+from html_tags import html_tags
 
 
 class DataStackJobsScraper:
