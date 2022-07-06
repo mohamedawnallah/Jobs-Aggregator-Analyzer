@@ -17,7 +17,7 @@ class DataStackJobsScraper:
     """Scraper for Datastackjobs.com"""
 
     def __init__(self):
-        self.url = "https://datastackjobs.com"
+        self.url = configs['datastackjobs']['data-stack_jobs_url']
         self.html_contents = self.request_page()
         self.soup = self.parse_html_contents()
         self.jobs_data = self.access_job_data()
