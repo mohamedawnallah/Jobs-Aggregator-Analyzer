@@ -7,11 +7,21 @@ name = "pypi"
 toml = "*"
 beautifulsoup4 = "*"
 requests = "*"
+fastapi = "*"
+responses = "*"
+loguru = "*"
 
 [dev-packages]
 pytest = "*"
 flake8 = "*"
 pytest-rerunfailures="*"
+mkdocs = "*"
+mkdocstrings = {extras = ["python"], version = "*"}
+mkdocs-material = "*"
+black = "*"
+allure-pytest = "*"
+pytest-xdist = "*"
+pytest-sugar = "*"
 
 [requires]
 python_version = "3.9"

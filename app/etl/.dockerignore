@@ -1,0 +1,10 @@
+# Ignore everything
+**
+
+# ... except for dependencies and source
+!scrappers/
+!settings/
+!utils/
+!main.py
+!Pipfile
+!Pipfile.lock

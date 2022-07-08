@@ -5,6 +5,12 @@
 # gitignore template for Jupyter Notebooks
 # website: http://jupyter.org/
 
+# ignore Allure reports
+reports
+
+# Ignore logs
+**/logs
+
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
 
