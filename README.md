@@ -14,7 +14,7 @@ I was looking to better understand what skills and expected market salary for **
 - Forecasting, if possible, the skills that will be in greater or lesser demand in the next year
 
 # 🏗 Architecture
-![Architecture](https://github.com/mhmdawnallah/Data-Jobs-Research/blob/feature/images/Architecture.png)
+![Architecture](https://github.com/mhmdawnallah/Data-Jobs-Research/blob/feature/diagrams/Architecture.png)
 
 # 🏢 Data Warehouse Schema Design
-![Data Warehouse Schema Design](https://github.com/mhmdawnallah/Data-Jobs-Research/blob/feature/images/Data%20Warehouse%20Schema%20Design.png)
+![Data Warehouse Schema Design](https://github.com/mhmdawnallah/Data-Jobs-Research/blob/feature/diagrams/Data%20Warehouse%20Schema%20Design.png)
