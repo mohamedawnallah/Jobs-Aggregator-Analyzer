@@ -36,30 +36,3 @@ We're looking to better understand what **skills**, **expected market salary** f
 
 # 🏢 Data Warehouse Schema Design
 ![Data Warehouse Schema Design](https://github.com/mhmdawnallah/Data-Jobs-Research/blob/feature/diagrams/Data%20Warehouse%20Schema%20Design.png)
-
-
-Collect Requirements (Brainstorming):
-    - Oxford Definition: a thing that is needed or wanted.
-    - Identify the problems we wanna solve
-    - Clarify the functionality required to solve the problems
-    - Document important decisions
-    - Functional Requirements:
-        - Represent the Features
-        - Define how to react to an input
-        - Determine the expected behavior
-    - Non-Functional Requirements:
-        - Are not directly related to the features of the system but important nonetheless
-        - Performance Requirements
-        - Legal/Regulations Requirements (e.g:Does the app collect sensitive data)
-        - Documentation
-Descripe the Software from the user prospective:
-    - Agile Or Waterfall
-    - Create wireframes and prototypes if needed
-Identify the classes:
-    - Playing Entities
-Create Diagrams:
-    - Use Case Diagrams for business people
-    - Class Diagrams for technical people
-    - Sequence daigrams for dynamic ones and interaction between objects
-    - Activity Diagrams
-    - Statechart Diagrams
