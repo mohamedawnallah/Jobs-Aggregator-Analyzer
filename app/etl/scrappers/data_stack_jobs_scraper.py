@@ -10,7 +10,7 @@ import csv
 import json
 import requests
 from bs4 import BeautifulSoup
-from html_tags import html_tags
+from etl.scrappers.html_tags import html_tags
 
 
 class DataStackJobsScraper:

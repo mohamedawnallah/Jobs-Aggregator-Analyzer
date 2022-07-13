@@ -1,7 +1,7 @@
 import pytest
 from etl.scrappers.indeed_scrapper import IndeedScrapper
 from etl.scrappers.data_stack_jobs_scraper import DataStackJobsScraper
-from utils.utils import Utils
+from etl.utils.utils import Utils
 from etl.utils.job_specifications import OrSpecification,ProgrammingLanguagesSpecification,IngestTechSpecification, BachelorComputerScienceSpecification
 
 @pytest.fixture
