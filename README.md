@@ -38,4 +38,3 @@ We're looking to better understand what **skills**, **expected market salary** f
 
 <!-- # 🏗 Architecture
 ![Architecture](https://github.com/mhmdawnallah/Data-Jobs-Research/blob/feature/diagrams/Architecture.png) -->
-⇔
