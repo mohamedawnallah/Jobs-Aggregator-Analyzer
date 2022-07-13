@@ -1,7 +1,9 @@
 import pytest
 from etl.scrappers.indeed_scrapper import IndeedScrapper
+from etl.scrappers.data_stack_jobs_scraper import DataStackJobsScraper
 from utils.utils import Utils
 from etl.utils.job_specifications import OrSpecification,ProgrammingLanguagesSpecification,IngestTechSpecification, BachelorComputerScienceSpecification
+
 @pytest.fixture
 def configs() -> dict:
     """Fixture for configs"""
@@ -19,3 +21,8 @@ def indeed_scrapper(configs: dict, job_specifications: OrSpecification) -> "Inde
     """Fixture for IndeedScrapper"""
     indeed_scrapper: IndeedScrapper = IndeedScrapper(configs,job_specifications)
     return indeed_scrapper
+
+@pytest.fixture(scope="module")
+def data_stack_jobs_scraper():
+    """Fixture for DataStackJobsScraper"""
+    return DataStackJobsScraper()
