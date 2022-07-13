@@ -31,8 +31,10 @@ We're looking to better understand what **skills**, **expected market salary** f
 - As a Business-User, I want to see use case diagrams so that I get idea what are use cases available in this system without exposure to tehnical stuffs.
 - As a Talents-Recruiter/(Data)Hiring-Manager/Data-Engineer, I want to see usecase diagrams, classes and relationships diagrams(if applicable for business users), data visualizations, skills used, APIs, Frontend-Website, Data Quality last but not the least running all tests fast and efficently (Hopefully all's passed).
 
-# 🏗 Architecture
-![Architecture](https://github.com/mhmdawnallah/Data-Jobs-Research/blob/feature/diagrams/Architecture.png)
-
+# ⇔ Data Pipeline Architecture
+![Data Pipeline Architecture](https://github.com/mhmdawnallah/Data-Jobs-Research/blob/feature/diagrams/Data%20Pipeline%20Architecture.png)
 # 🏢 Data Warehouse Schema Design
 ![Data Warehouse Schema Design](https://github.com/mhmdawnallah/Data-Jobs-Research/blob/feature/diagrams/Data%20Warehouse%20Schema%20Design.png)
+
+<!-- # 🏗 Architecture
+![Architecture](https://github.com/mhmdawnallah/Data-Jobs-Research/blob/feature/diagrams/Architecture.png) -->
