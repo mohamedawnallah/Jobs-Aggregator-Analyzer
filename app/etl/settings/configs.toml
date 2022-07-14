@@ -30,7 +30,7 @@ company_base_url = "https://www.indeed.com/cmp/%(company_name)s"
 countries_base_url = "https://www.indeed.com/worldwide"
 
 [datastackjobs]
-data-stack_jobs_url = "https://www.datastackjobs.com"
+data_stack_jobs_url = "https://www.datastackjobs.com"
 data_stack_jobs_sample_html = "Data-Engineering-Jobs-Research/app/etl/tests/resources/test_utils/data_stack_jobs_sample.html"
 
 [company]
