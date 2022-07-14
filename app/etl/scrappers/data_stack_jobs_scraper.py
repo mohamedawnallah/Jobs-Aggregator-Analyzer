@@ -17,7 +17,7 @@ class DataStackJobsScraper:
     """Scraper for Datastackjobs.com"""
 
     def __init__(self):
-        self.url = configs['datastackjobs']['data-stack_jobs_url']
+        self.url = configs['datastackjobs']['data_stack_jobs_url']
         self.html_contents = self.request_page()
         self.soup = self.parse_html_contents()
         self.jobs_data = self.access_job_data()
@@ -55,7 +55,7 @@ class DataStackJobsScraper:
 
     def write_to_csv(self):
         """Write jobs data to csv file."""
-        with open("app/static/data/data_stack_jobs.csv", mode="w") as file:
+        with open("app/etl/static/data/data_stack_jobs.csv", mode="w") as file:
             fieldnames = [
                 "application_url_or_email",
                 "category",
