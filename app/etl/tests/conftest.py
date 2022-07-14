@@ -22,7 +22,7 @@ def indeed_scrapper(configs: dict, job_specifications: OrSpecification) -> "Inde
     indeed_scrapper: IndeedScrapper = IndeedScrapper(configs,job_specifications)
     return indeed_scrapper
 
-@pytest.fixture(scope="module")
-def data_stack_jobs_scraper():
-    """Fixture for DataStackJobsScraper"""
-    return DataStackJobsScraper()
+@pytest.fixture()
+def data_stack_jobs_scraper(configs: dict) -> DataStackJobsScraper:
+    """Fixture for returning a DataStackJobsScraper object"""
+    return DataStackJobsScraper(configs)
