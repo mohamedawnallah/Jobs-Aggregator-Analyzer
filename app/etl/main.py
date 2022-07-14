@@ -11,6 +11,7 @@ import logging.config
 from loguru import logger
 from etl.utils.utils import Utils
 from etl.scrappers.indeed_scrapper import IndeedScrapper
+from etl.scrappers.data_stack_jobs_scraper import DataStackJobsScraper
 from etl.etls.indeed_etl import IndeedETL
 from etl.models.job_dataclasses import Country
 from etl.utils.job_specifications import (
@@ -40,7 +41,9 @@ def main(configs:dict, job_title:str, job_skills:OrSpecification, csv_file_path:
     indeed_etl = IndeedETL(configs, job_title, job_skills)
     job_items_generator: Iterator[dict] = indeed_etl.extract(customized_countries=customized_countries, countries_no=countries_no, jobs_pages_no=jobs_pages_no)
     indeed_etl.load(csv_file_path=csv_file_path, jobs_countries=job_items_generator)
-    
+
+    data_stack_jobs_scraper = DataStackJobsScraper(configs=configs)
+    data_stack_jobs_scraper.run_ETL()
 
 
 
