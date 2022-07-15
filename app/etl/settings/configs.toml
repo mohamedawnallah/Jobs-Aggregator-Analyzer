@@ -31,7 +31,7 @@ countries_base_url = "https://www.indeed.com/worldwide"
 
 [datastackjobs]
 data_stack_jobs_url = "https://www.datastackjobs.com"
-data_stack_jobs_sample_html = "Data-Engineering-Jobs-Research/app/etl/tests/resources/test_utils/data_stack_jobs_sample.html"
+data_stack_jobs_sample_html = "app/etl/tests/resources/test_utils/data_stack_jobs_sample.html"
 
 [company]
 company_name = ''
