@@ -25,4 +25,4 @@ def indeed_scrapper(configs: dict, job_specifications: OrSpecification) -> "Inde
 @pytest.fixture()
 def data_stack_jobs_scraper(configs: dict) -> DataStackJobsScraper:
     """Fixture for returning a DataStackJobsScraper object"""
-    return DataStackJobsScraper(configs)
+    return DataStackJobsScraper(configs=configs)
