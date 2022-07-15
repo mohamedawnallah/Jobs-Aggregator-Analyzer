@@ -34,13 +34,13 @@ class DataStackJobsScraper:
         soup = BeautifulSoup(html_contents, "html.parser")
         return soup
 
-    def access_job_data(self, soup: BeautifulSoup) -> dict:
+    def access_job_data(self, soup: BeautifulSoup) -> list[dict]:
         """Pull contents from Datastackjobs.com-specific html tag and convert to python dict type via JSON library."""
         jobs_data = soup.find(name="script", id="__NEXT_DATA__")
         jobs_data: dict = json.loads(jobs_data.string)
         return jobs_data["props"]["pageProps"]["jobs"]
 
-    def clean_description_tags(self, jobs_data: dict) -> list:
+    def clean_description_tags(self, jobs_data: list) -> list:
         """Remove html tags from description column contents."""
         jobs_data_clean = []
         for job in jobs_data:
