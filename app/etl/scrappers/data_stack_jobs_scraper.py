@@ -8,9 +8,9 @@ and saves the results in a CSV file(temporary).
 
 import csv
 import json
+import re
 import requests
 from bs4 import BeautifulSoup
-from etl.scrappers.html_tags import html_tags
 from etl.utils.utils import Utils
 
 utils = Utils()
@@ -40,15 +40,15 @@ class DataStackJobsScraper:
         jobs_data: dict = json.loads(jobs_data.string)
         return jobs_data["props"]["pageProps"]["jobs"]
 
+    def clean_string(self, description: str) -> str:
+        clean = re.compile('<.*?>')
+        return re.sub(clean, '', description)
+
     def clean_description_tags(self, jobs_data: list) -> list:
         """Remove html tags from description column contents."""
         jobs_data_clean = []
         for job in jobs_data:
-            description = job["description"]
-            for tag in html_tags:
-                if tag in description:
-                    description = description.replace(tag, "")
-            job["description"] = description
+            job["description"] = self.clean_string(job["description"])
             jobs_data_clean.append(job)
         return jobs_data_clean
 
