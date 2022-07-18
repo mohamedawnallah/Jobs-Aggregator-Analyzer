@@ -29,5 +29,6 @@ def data_stack_jobs_scraper(configs: dict) -> DataStackJobsScraper:
 
 @pytest.fixture
 def get_html_tags(configs: dict) -> list:
+    """Fixture for retrieving sample html for DataStackJobsScraper tests."""
     html_tags = configs['html_elements']['html_tags']
     return html_tags
