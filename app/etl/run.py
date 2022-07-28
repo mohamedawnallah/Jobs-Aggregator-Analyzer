@@ -45,5 +45,6 @@ if __name__ == "__main__":
     job_params = {"configs":indeed_data_source,"customized_countries":customized_countries,
                   "job_title":job_title,"pages_no": pages_no,"csv_file_path":csv_file_path,
                   "job_skills":job_skills}
+                  
     main(job_params)
 
