@@ -61,27 +61,9 @@ def test_are_all_words_found(search_words: list[str], text: str, expected_result
     result = Utils.are_all_words_found(search_words, text)
     assert result is expected_result
 
-@responses.activate
-def test_get_page_parsed() -> None:
-    """Ensure that indeed jobs html example is parsed correctly"""
-    url = "https://www.indeed.com/jobs?q=Data%20Engineering"
-    jobs_example_html_path: str = "app/etl/tests/resources/test_utils/indeed_jobs_example.html"
-    with open(jobs_example_html_path, "r",encoding="utf-8") as fh:
-        html = fh.read()
-        responses.add(
-            responses.GET,
-            url=url,
-            body=html,
-            status=200,
-            content_type="text/html",
-        )
-    expected_result = BeautifulSoup
-    page_parsd: BeautifulSoup = Utils.get_page_parsed(url)
-    assert isinstance(page_parsd, expected_result)
-
 def test_get_configs() -> None:
     """Test get_configs"""
-    configs_path = "app/etl/settings/configs.toml"
+    configs_path = "app/etl/settings/etl_configs.yaml"
     configs = Utils.get_configs(configs_path)
     expected_result = dict
     assert isinstance(configs, expected_result)
@@ -136,3 +118,20 @@ def test_are_all_job_skills_null(job_skills: dict, expected_result: bool) -> Non
     result = Utils.are_all_job_skills_null(job_skills)
     assert result is expected_result
 
+# @responses.activate
+# def test_get_page_parsed() -> None:
+#     """Ensure that indeed jobs html example is parsed correctly"""
+#     url = "https://www.indeed.com/invalid/jobs?q=Data%20Engineering"
+#     jobs_example_html_path: str = "app/etl/tests/resources/test_utils/indeed_jobs_example.html"
+#     with open(jobs_example_html_path, "r",encoding="utf-8") as fh:
+#         html = fh.read()
+#         responses.add(
+#             responses.GET,
+#             url=url,
+#             body=html,
+#             status=200,
+#             content_type="text/html",
+#         )
+#     expected_result = BeautifulSoup
+#     page_parsd: BeautifulSoup = Utils.get_page_parsed(url)
+#     assert isinstance(page_parsd, expected_result)

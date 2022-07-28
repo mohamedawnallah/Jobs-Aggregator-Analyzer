@@ -6,7 +6,7 @@ from app.utilities import decorators
 from etl.utils.etls_common import CSVPersistenceManager
 from typing import Iterator
 from etl.utils.utils import Utils
-from etl.models.job_dataclasses import JobFullInfo
+from models.job_models import JobFullInfo
 
 class IndeedPersistenceManager(CSVPersistenceManager):
     """Persistence manager class"""
@@ -15,7 +15,7 @@ class IndeedPersistenceManager(CSVPersistenceManager):
     def write_to_csv(
         csv_file_name: str,
         jobs_countries_gen: Iterator[JobFullInfo]
-    ) -> int:
+    ) -> bool:
         """Write data to csv file"""
         with open(csv_file_name, "w", encoding="utf-8") as csv_file:
             job_item = {}
@@ -27,6 +27,5 @@ class IndeedPersistenceManager(CSVPersistenceManager):
                     csv_writer.writeheader()
                 are_all_job_skills_null = Utils.are_all_job_skills_null(job_full_info.job_skills)
                 if not are_all_job_skills_null:
-                    logger.debug(json.dumps(job_dict, indent=4))
                     csv_writer.writerow(job_dict)
-        return 0
+        return True

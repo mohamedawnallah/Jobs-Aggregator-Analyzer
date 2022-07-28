@@ -4,12 +4,14 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-toml = "*"
 beautifulsoup4 = "*"
 requests = "*"
 fastapi = "*"
 responses = "*"
 loguru = "*"
+pyyaml = "*"
+python-dotenv = "*"
+normality = "*"
 
 [dev-packages]
 pytest = "*"
@@ -22,6 +24,8 @@ black = "*"
 allure-pytest = "*"
 pytest-xdist = "*"
 pytest-sugar = "*"
+yamllint = "*"
+pandas = "*"
 
 [requires]
 python_version = "3.9"

@@ -7,7 +7,7 @@ from etl.utils.job_specifications import OrSpecification,ProgrammingLanguagesSpe
 @pytest.fixture
 def configs() -> dict:
     """Fixture for configs"""
-    configs: dict = Utils.get_configs("app/etl/settings/configs.toml")
+    configs: dict = Utils.get_configs("app/etl/settings/etl_configs.yaml")
     return configs
 
 @pytest.fixture

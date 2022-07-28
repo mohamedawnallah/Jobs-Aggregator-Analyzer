@@ -1,6 +1,6 @@
 from abc import abstractmethod, ABC
 from typing import Optional, Iterator, Any
-from etl.models.job_dataclasses import JobBasicInfo, CompanyBasicInfo, JobMoreInfo, JobFullInfo, Country
+from models.job_models import JobBasicInfo, CompanyBasicInfo, JobMoreInfo, JobFullInfo, Country
 from etl.utils.job_specifications import BaseSpecification
 
 
@@ -118,3 +118,8 @@ class Loader(ABC):
     def load(self, *args, **kwargs) -> Any:
         """Load data into one of the provided persistence managers"""
 
+class ETL(ABC):
+    """ETL"""
+    @abstractmethod
+    def run(self, *args, **kwargs) -> Any:
+        """Run the ETL"""

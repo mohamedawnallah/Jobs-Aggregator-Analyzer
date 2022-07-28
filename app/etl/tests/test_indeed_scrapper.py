@@ -8,7 +8,7 @@ from dataclasses import is_dataclass
 import responses
 import pytest
 from etl.scrappers.indeed_scrapper import IndeedScrapper
-from models.job_dataclasses import Country
+from models.job_models import Country
 
 
 def test_get_indeed_countries(indeed_scrapper: IndeedScrapper) -> None:
