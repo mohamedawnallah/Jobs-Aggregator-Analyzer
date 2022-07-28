@@ -5,6 +5,12 @@
 # gitignore template for Jupyter Notebooks
 # website: http://jupyter.org/
 
+# ignore Allure reports
+reports
+
+# Ignore logs
+**/logs
+
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
 
@@ -135,7 +141,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
+
 .venv
 env/
 venv/
@@ -175,3 +181,4 @@ cython_debug/
 #.idea/
 
 # End of https://www.toptal.com/developers/gitignore/api/python,jupyternotebooks
+app/etl/.env

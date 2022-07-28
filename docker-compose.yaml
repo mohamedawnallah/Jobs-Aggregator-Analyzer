@@ -1,19 +1,23 @@
-version: '3'
-
+version: '3.8'
 services:
-  app:
-    image: data-research-jobs-app:latest
-    build:
-      context: .
+  etl:
+    build: 
+      context: ./etl
       dockerfile: Dockerfile
+    stdin_open: true
+    tty: true
     volumes:
-      - ./app:/app
-  tests:
-    image: data-research-jobs-tests:latest
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
-    volumes:
-      - ./app:/app
-      - ./tests:/app/tests
-    command: ["pytest", "-v", "--reruns", "5", "--reruns-delay", "1"]
+      - ./etl:/app
+  
+  # tests:
+  #   image: data-research-jobs-tests:latest
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.dev
+  #   volumes:
+  #     - ./app:/app
+  #     - ./tests:/app/tests
+  #   command: ["pytest", "-v", "--reruns", "5", "--reruns-delay", "1"]
+
+
+

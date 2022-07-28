@@ -4,14 +4,28 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-toml = "*"
 beautifulsoup4 = "*"
 requests = "*"
+fastapi = "*"
+responses = "*"
+loguru = "*"
+pyyaml = "*"
+python-dotenv = "*"
+normality = "*"
 
 [dev-packages]
 pytest = "*"
 flake8 = "*"
 pytest-rerunfailures="*"
+mkdocs = "*"
+mkdocstrings = {extras = ["python"], version = "*"}
+mkdocs-material = "*"
+black = "*"
+allure-pytest = "*"
+pytest-xdist = "*"
+pytest-sugar = "*"
+yamllint = "*"
+pandas = "*"
 
 [requires]
 python_version = "3.9"
