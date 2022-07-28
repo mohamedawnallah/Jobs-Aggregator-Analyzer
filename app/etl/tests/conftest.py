@@ -22,7 +22,13 @@ def indeed_scrapper(configs: dict, job_specifications: OrSpecification) -> "Inde
     indeed_scrapper: IndeedScrapper = IndeedScrapper(configs,job_specifications)
     return indeed_scrapper
 
-@pytest.fixture(scope="module")
-def data_stack_jobs_scraper():
-    """Fixture for DataStackJobsScraper"""
-    return DataStackJobsScraper()
+@pytest.fixture()
+def data_stack_jobs_scraper(configs: dict) -> DataStackJobsScraper:
+    """Fixture for returning a DataStackJobsScraper object"""
+    return DataStackJobsScraper(configs=configs)
+
+@pytest.fixture
+def get_html_tags(configs: dict) -> list:
+    """Fixture for retrieving sample html for DataStackJobsScraper tests."""
+    html_tags = configs['html_elements']['html_tags']
+    return html_tags

@@ -8,54 +8,53 @@ and saves the results in a CSV file(temporary).
 
 import csv
 import json
+import re
 import requests
 from bs4 import BeautifulSoup
-from etl.scrappers.html_tags import html_tags
+from etl.utils.utils import Utils
+
+utils = Utils()
+configs = utils.get_configs()
 
 
 class DataStackJobsScraper:
     """Scraper for Datastackjobs.com"""
 
-    def __init__(self):
-        self.url = configs['datastackjobs']['data-stack_jobs_url']
-        self.html_contents = self.request_page()
-        self.soup = self.parse_html_contents()
-        self.jobs_data = self.access_job_data()
-        self.clean_description_tags()
-        self.write_to_csv()
+    def __init__(self, configs: dict):
+        self.url: str = configs['datastackjobs']['data_stack_jobs_url']
 
-    def request_page(self):
+    def request_page(self) -> str:
         """Request source html and access html text."""
         page = requests.get(self.url)
-        html_contents = page.text
+        html_contents: str = page.text
         return html_contents
 
-    def parse_html_contents(self):
+    def parse_html_contents(self, html_contents: str) -> BeautifulSoup:
         """Use Beautiful Soup to parse html contents."""
-        soup = BeautifulSoup(self.html_contents, "html.parser")
+        soup = BeautifulSoup(html_contents, "html.parser")
         return soup
 
-    def access_job_data(self):
+    def access_job_data(self, soup: BeautifulSoup) -> list[dict]:
         """Pull contents from Datastackjobs.com-specific html tag and convert to python dict type via JSON library."""
-        jobs_data = self.soup.find(name="script", id="__NEXT_DATA__")
-        jobs_data = json.loads(jobs_data.string)
+        jobs_data = soup.find(name="script", id="__NEXT_DATA__")
+        jobs_data: dict = json.loads(jobs_data.string)
         return jobs_data["props"]["pageProps"]["jobs"]
 
-    def clean_description_tags(self):
-        """Remove html tags from description column contents."""
-        cleaned_jobs = []
-        for job in self.jobs_data:
-            description = job["description"]
-            for tag in html_tags:
-                if tag in description:
-                    description = description.replace(tag, "")
-            job["description"] = description
-            cleaned_jobs.append(job)
-        self.jobs_data = cleaned_jobs
+    def clean_string(self, description: str) -> str:
+        clean = re.compile('<.*?>')
+        return re.sub(clean, '', description)
 
-    def write_to_csv(self):
+    def clean_description_tags(self, jobs_data: list) -> list:
+        """Remove html tags from description column contents."""
+        jobs_data_clean = []
+        for job in jobs_data:
+            job["description"] = self.clean_string(job["description"])
+            jobs_data_clean.append(job)
+        return jobs_data_clean
+
+    def write_to_csv(self, jobs_data_clean: list) -> None:
         """Write jobs data to csv file."""
-        with open("app/static/data/data_stack_jobs.csv", mode="w") as file:
+        with open("app/etl/static/data/data_stack_jobs.csv", mode="w") as file:
             fieldnames = [
                 "application_url_or_email",
                 "category",
@@ -76,9 +75,16 @@ class DataStackJobsScraper:
             ]
             csv_writer = csv.DictWriter(f=file, fieldnames=fieldnames)
             csv_writer.writeheader()
-            for row in self.jobs_data:
+            for row in jobs_data_clean:
                 csv_writer.writerow(row)
 
+    def run_ETL(self):
+        html_contents = self.request_page()
+        soup = self.parse_html_contents(html_contents)
+        jobs_data = self.access_job_data(soup)
+        jobs_data_clean = self.clean_description_tags(jobs_data)
+        self.write_to_csv(jobs_data_clean)
 
 if __name__ == "__main__":
-    scraper = DataStackJobsScraper()
+    scraper = DataStackJobsScraper(configs=configs)
+    scraper.run_ETL()
