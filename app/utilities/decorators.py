@@ -18,7 +18,7 @@ def timer(func) -> Decorator:
         end_time = time.perf_counter()
         run_time = end_time - start_time
         message = f"{func.__name__!r} took {run_time:.4f} seconds"
-        logger.debug(message)
+        # logger.debug(message)
         return value
 
     return wrapper_timer
@@ -46,9 +46,9 @@ def debug(func) -> Decorator:
         args_repr = [repr(a) for a in args]
         kwargs_repr = [f"{k}= {v!r}" for k, v in kwargs.items()]
         signature = ", ".join(args_repr + kwargs_repr)
-        logger.debug(f"Calling {func.__name__}({signature})")
+        # logger.debug(f"Calling {func.__name__}({signature})")
         value = func(*args, **kwargs)
-        logger.debug(f"{func.__name__!r} returned {value!r}")
+        # logger.debug(f"{func.__name__!r} returned {value!r}")
         return value
 
     return wrapper_debug

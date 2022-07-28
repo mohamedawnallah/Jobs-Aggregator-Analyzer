@@ -4,10 +4,10 @@ Reusable functions that are used throughout the application from different modul
 """
 import re
 from abc import ABC, abstractmethod
-from typing import Optional, Union, Generator, Any, Iterator
+from typing import Optional, Union, Generator, Any, Iterator, List
 from collections import namedtuple, defaultdict
 import requests
-import toml
+import yaml
 import bs4
 from bs4 import BeautifulSoup
 from loguru import logger
@@ -49,35 +49,67 @@ class Utils:
             if not is_word_found:
                 return False
         return True
+    
+    @staticmethod
+    def get_all_found_words(search_words: str, text) -> str:
+        """Get all the found words in the given text"""
+        text = Utils.get_valid_text(text)
+        found_words = []
+        for search_word in search_words.split(","):
+            search_words_in_word: List[str] = search_word.split('|')
+            for given_word in search_words_in_word[::-1]:
+                is_word_found = Utils.is_word_found(given_word, text)
+                if is_word_found:
+                    if given_word not in found_words:
+                        found_words.append(given_word)
+                    break
+        found_words: str = ','.join(found_words)
+        return found_words
 
     @staticmethod
     def is_word_found(search_word: str, text: str) -> bool:
         """Check if the word is found in the given text"""
         search_word = Utils.get_valid_text(search_word)
         text = Utils.get_valid_text(text)
-        if not re.search(r"\b" + re.escape(search_word) + r"\b", text):
+        search_pattern = r"\b" + re.escape(search_word) + r"\b"
+        if not re.search(search_pattern, text):
             return False
         return True
 
+    
     @staticmethod
     def get_page_parsed(url: str) -> BeautifulSoup:
-        """Get beautiful soup for the given link"""
+        """Get the parsed page of the given html"""
+        html: str = Utils.get_html_page(url)
+        soup: BeautifulSoup = Utils.get_beautiful_soup(html)
+        return soup
+
+    @staticmethod
+    def get_html_page(url: str) -> BeautifulSoup:
+        """Get the html for the given link"""
         while True:
             try:
                 jobs_response = requests.get(url)
                 break
             except requests.exceptions.ConnectionError as connection_error:
-                logger.warning(connection_error)
                 continue
             except requests.exceptions.MissingSchema as missing_schema_error:
-                logger.error(missing_schema_error)
-        jobs_soup: bs4.BeautifulSoup = BeautifulSoup(jobs_response.text, "html.parser")
-        return jobs_soup
+                pass
+        return jobs_response.text
 
     @staticmethod
-    def get_configs(configs_path: str = "app/etl/settings/configs.toml") -> dict:
+    def get_beautiful_soup(html: str) -> BeautifulSoup:
+        """Get beautiful soup object"""
+        return BeautifulSoup(html, "html.parser")
+
+    @staticmethod
+    def get_configs(configs_path: str = "app/etl/settings/etl_configs.yaml") -> dict:
         """Get the configs from the config file"""
-        configs = toml.load(configs_path)
+        with open(configs_path, "r",encoding='utf-8') as configs_file:
+            try:
+                configs: dict = yaml.safe_load(configs_file)
+            except yaml.YAMLError as yaml_error:
+                print(yaml_error)
         return configs
 
     @staticmethod

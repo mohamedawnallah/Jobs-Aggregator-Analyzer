@@ -36,3 +36,9 @@ def test_access_job_data_return_type_is_list_of_dicts(data_stack_jobs_html, data
     assert type(jobs_data) == list
     assert type(jobs_data[1]) == dict
     assert type(jobs_data[2]) == dict
+
+def test_clean_string(data_stack_jobs_scraper, get_html_tags):
+    html_tags = get_html_tags
+    scraper = data_stack_jobs_scraper
+    html_sample = ''.join(html_tags)
+    assert scraper.clean_string(html_sample) == ''

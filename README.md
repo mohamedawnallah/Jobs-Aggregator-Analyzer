@@ -1,11 +1,11 @@
 # ✨ Background
-We're looking to better understand what **skills**, **expected market salary** for **data jobs based on seniority level** to learn the most in-demand ones and to be fairly paid too also see **if the given data job are going more in-demand** and **how positively or negatively people talking about on twitter platform**. We felt the best places to start are job search platforms and twitter, so this is our start at this project.
+We're looking to better understand **what skills, expected market salary for data jobs based on seniority level?** to learn the most in-demand ones and to be fairly paid too also see **if the given data job title is going more in-demand?** and **how positively or negatively people talking about on twitter platform?**. We felt the best places to start are job search platforms and twitter, so this is our start at this project.
 
 # 💡 Data Jobs Research Features
 - Getting the latest data jobs based on the given job title [Duplication in Consideration] and many other filters criteria(country,remote,seniority, ...etc).
 - Getting the latest data job requirements based on the given job title and many other filter criterias.
-- Analyzing the jobs skills/degrees requirements through visualizations📈📉.
-- Implementing APIs for our project so end-users/BI-users can implement their own analysis and getting other insights📊
+- Analyzing the jobs skills/degrees requirements through visualizations 📈 📉.
+- Implementing APIs for our project so end-users/BI-users can implement their own analysis and getting other insights 📊
 - Seeing if the given job title in-demand's increasing or not through many criterias(e.g: jobs posted on different times, ...etc)
 - Seeing people's opinions about the given job title specially on twitter platform through its given third party API.
 - Implementing a wonderful landing page on our frontend website.
@@ -31,10 +31,59 @@ We're looking to better understand what **skills**, **expected market salary** f
 - As a Business-User, I want to see use case diagrams so that I get idea what are use cases available in this system without exposure to tehnical stuffs.
 - As a Talents-Recruiter/(Data)Hiring-Manager/Data-Engineer, I want to see usecase diagrams, classes and relationships diagrams(if applicable for business users), data visualizations, skills used, APIs, Frontend-Website, Data Quality last but not the least running all tests fast and efficently (Hopefully all's passed).
 
+<!-- # Contents
+
+- [The Data Set](#the-data-set)
+- [Data Pipeline Architecture](#⇔-data-pipeline-architecture)
+- [Data Warehouse Schema Design](#🏢-data-warehouse-schema-design)
+- [Used Tools](#used-tools)
+  - [Connect](#connect)
+  - [Buffer](#buffer)
+  - [Processing](#processing)
+  - [Storage](#storage)
+  - [Visualization](#visualization)
+- [Pipelines](#pipelines)
+  - [Stream Processing](#stream-processing)
+    - [Storing Data Stream](#storing-data-stream)
+    - [Processing Data Stream](#processing-data-stream)
+  - [Batch Processing](#batch-processing)
+  - [Visualizations](#visualizations)
+- [Demo](#demo)
+- [Conclusion](#conclusion)
+- [Follow Me On](#follow-me-on)
+- [Appendix](#appendix)
+
+# Pipelines
+- Explain the pipelines for processing that you are building
+- Go through your development and add your source code -->
 # ⇔ Data Pipeline Architecture
 ![Data Pipeline Architecture](https://github.com/mhmdawnallah/Data-Jobs-Research/blob/feature/diagrams/Data%20Pipeline%20Architecture.png)
 # 🏢 Data Warehouse Schema Design
 ![Data Warehouse Schema Design](https://github.com/mhmdawnallah/Data-Jobs-Research/blob/feature/diagrams/Data%20Warehouse%20Schema%20Design.png)
 
-<!-- # 🏗 Architecture
-![Architecture](https://github.com/mhmdawnallah/Data-Jobs-Research/blob/feature/diagrams/Architecture.png) -->
+<!-- ## Connect
+## Buffer
+## Processing
+## Storage
+## Visualization
+## Stream Processing
+### Storing Data Stream
+### Processing Data Stream
+## Batch Processing
+## Visualizations
+
+# Demo
+- You could add a demo video here
+- Or link to your presentation video of the project
+
+# Conclusion
+Write a comprehensive conclusion.
+- How did this project turn out
+- What major things have you learned
+- What were the biggest challenges
+
+# Follow Us On
+Add the links to our LinkedIn Profiles
+https://www.linkedin.com/in/mohamedawnallah/
+
+# Appendix -->

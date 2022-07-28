@@ -1,9 +1,9 @@
 from collections import namedtuple
-import re
+from typing import List
 from loguru import logger
 import bs4
 from etl.utils.utils import Utils
-from etl.models.job_dataclasses import Country, JobCompanyBasicInfo, JobBasicInfo, JobMoreInfo, CompanyBasicInfo, JobFullInfo
+from models.job_models import Country, JobCompanyBasicInfo, JobBasicInfo, JobMoreInfo, CompanyBasicInfo, JobFullInfo
 from etl.utils.etls_common import JobCompanyBasicInfoTransformer, JobMoreInfoTransformer, JobPagesNoTransformer, JobSkillsTransformer, CountriesTransformer
 from etl.utils.job_specifications import JobDescriptionFilter, BaseSpecification
 
@@ -20,12 +20,12 @@ class IndeedBasicJobCompanyInfoTransformer(JobCompanyBasicInfoTransformer):
         company_name = Utils.get_valid_value(company_basic_info.company_name)
         company_location = Utils.get_valid_value(company_basic_info.company_location)
         company_rating = Utils.get_valid_value(company_basic_info.company_rating)
-        country_name = Utils.get_valid_value(company_basic_info.country_name)
+        country_name = Utils.get_valid_value(company_basic_info.company_country_name)
         job_id = IndeedTransformerUtils.get_valid_job_id(job_id)
         job_url = IndeedTransformerUtils.get_job_url(job_base_url, job_id)
         company_url = IndeedTransformerUtils.get_company_url(company_base_url, company_name)
         job_basic_info: namedtuple = JobBasicInfo(job_title=job_title,job_id=job_id,job_salary=job_salary,job_url=job_url)
-        company_basic_info: namedtuple = CompanyBasicInfo(company_name=company_name,company_url=company_url,company_location=company_location,company_rating=company_rating,country_name=country_name)
+        company_basic_info: namedtuple = CompanyBasicInfo(company_name=company_name,company_url=company_url,company_location=company_location,company_rating=company_rating,company_country_name=country_name)
         return job_basic_info, company_basic_info
 
 class IndeedMoreJobInfoTransformer(JobMoreInfoTransformer):
@@ -36,7 +36,8 @@ class IndeedMoreJobInfoTransformer(JobMoreInfoTransformer):
         posted_date: str = Utils.get_valid_value(job_info.job_posted_date)
         job_description: str = Utils.get_valid_value(job_info.job_description)
         job_benefits: str = IndeedTransformerUtils.get_valid_job_benfits(job_info.job_benefits)
-        job_more_info = JobMoreInfo(job_description,job_benefits,posted_date,)
+        job_skills: str = Utils.get_all_found_words(job_info.job_skills,job_description)
+        job_more_info = JobMoreInfo(job_description=job_description,job_benefits=job_benefits,job_posted_date=posted_date,job_skills=job_skills)
         return job_more_info
 
 class IndeedJobSkillsTransformer(JobSkillsTransformer):
@@ -44,7 +45,6 @@ class IndeedJobSkillsTransformer(JobSkillsTransformer):
     @staticmethod
     def transform(job_specifications: BaseSpecification, job_description: str) -> dict[str]:
         """Transform Full Job Info"""
-        
         job_skills: dict[str] = JobDescriptionFilter.filter(job_specifications, job_description)
         return job_skills
 
@@ -53,11 +53,12 @@ class IndeedPagesNoTransformer(JobPagesNoTransformer):
     @staticmethod
     def transform(pages_no_raw: bs4.element.Tag) -> dict:
         """Transform the job info"""
-        pages_no = Utils.get_valid_value(pages_no_raw)
-        pages_no: list[str] = Utils.get_numbers_from_string(pages_no)
-        pages_no = min(pages_no) * 10
-        return pages_no
-
+        pages_no: list[str] = Utils.get_numbers_from_string(pages_no_raw.text.strip())
+        if len(pages_no) == 2:
+            pages_no = Utils.get_valid_value(pages_no_raw)
+            pages_no: list[str] = Utils.get_numbers_from_string(pages_no)
+            pages_no = min(pages_no) * 10
+            return pages_no
 
 class IndeedCountriesTransformer(CountriesTransformer):
     """Countries Transformer Abstract Class"""
@@ -69,7 +70,7 @@ class IndeedCountriesTransformer(CountriesTransformer):
         country_code = country_link.split("//")[1].split(".")[0]
         country: Country = Country(country_name, country_code)
         return country
-
+        
 class IndeedTransformerUtils:
     """Indeed Transformer Utils"""
     @staticmethod

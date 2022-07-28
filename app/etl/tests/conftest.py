@@ -7,7 +7,7 @@ from etl.utils.job_specifications import OrSpecification,ProgrammingLanguagesSpe
 @pytest.fixture
 def configs() -> dict:
     """Fixture for configs"""
-    configs: dict = Utils.get_configs("app/etl/settings/configs.toml")
+    configs: dict = Utils.get_configs("app/etl/settings/etl_configs.yaml")
     return configs
 
 @pytest.fixture
@@ -26,3 +26,9 @@ def indeed_scrapper(configs: dict, job_specifications: OrSpecification) -> "Inde
 def data_stack_jobs_scraper(configs: dict) -> DataStackJobsScraper:
     """Fixture for returning a DataStackJobsScraper object"""
     return DataStackJobsScraper(configs=configs)
+
+@pytest.fixture
+def get_html_tags(configs: dict) -> list:
+    """Fixture for retrieving sample html for DataStackJobsScraper tests."""
+    html_tags = configs['html_elements']['html_tags']
+    return html_tags
