@@ -36,6 +36,10 @@ jobs:
     - name: Install dependencies
       run: |
         pipenv install --dev
+    
+    - name: Install Certifi
+      run: |
+        pipenv install certifi
 
     - name: Lint with flake8
       run: |
