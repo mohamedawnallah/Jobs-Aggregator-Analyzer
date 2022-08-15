@@ -9,8 +9,8 @@ and saves the results in a CSV file(temporary).
 import csv
 import json
 import re
-import requests
 from bs4 import BeautifulSoup
+import requests
 from etl.utils.utils import Utils
 
 utils = Utils()

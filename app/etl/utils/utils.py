@@ -8,9 +8,10 @@ from abc import ABC, abstractmethod
 from typing import Optional, Union, Generator, Any, Iterator, List
 from collections import namedtuple, defaultdict
 import urllib.request
+import urllib.error
 from urllib.request import Request
-import requests
 import yaml
+import urllib
 import bs4
 from bs4 import BeautifulSoup
 from loguru import logger
@@ -97,10 +98,10 @@ class Utils:
                 with urllib.request.urlopen(Request(url, headers=headers)) as response:
                     html = response.read()
                     break
-            except requests.exceptions.ConnectionError as connection_error:
+            except urllib.error.HTTPError as connection_error:
                 logger.warning(f"Connection Error: {connection_error}")
                 continue
-            except requests.exceptions.MissingSchema as missing_schema_error:
+            except urllib.error.URLError as missing_schema_error:
                 logger.error(f"Missing Schema Error: {missing_schema_error}")
         return html
 

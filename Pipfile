@@ -9,6 +9,7 @@ fastapi = "*"
 pandas = "*"
 pyyaml = "*"
 python-dotenv = "*"
+requests = "*"
 
 [dev-packages]
 pytest = "*"

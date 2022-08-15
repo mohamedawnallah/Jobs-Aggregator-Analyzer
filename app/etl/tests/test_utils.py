@@ -5,7 +5,6 @@ Testing all the static methods of Utils class that are reused in other modules.
 # from http.client import responses
 from typing import Iterator, Type
 import pytest
-import requests
 from bs4 import BeautifulSoup
 from etl.utils.utils import Utils
 
