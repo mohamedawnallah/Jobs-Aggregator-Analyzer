@@ -38,7 +38,7 @@ jobs:
     
     - name: Install other dependencies
       run: |
-        pip install packaging
+        pipenv install packaging
         
     - name: Lint with flake8
       run: |
