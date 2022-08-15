@@ -4,17 +4,17 @@ import re
 from typing import List
 import requests
 from dotenv import load_dotenv
-from app.etl.utils.utils import Utils
+from etl.utils.utils import Utils
 
 class JobSkillsAPI:
     """Job Skills API"""
-    def __init__(self):
+    def __init__(self, lightcast_skills_configs: dict):
         #Load Environment Variables
         load_dotenv("app/etl/.env")
         self.emsi_client_id: str = os.getenv("EMSI_CLIENT_ID")
         self.emsi_secret: str = os.getenv("EMSI_SECRET")
         self.emsi_scope: str = os.getenv("EMSI_SCOPE")
-        self.lightcast_skills_configs: dict = Utils.get_configs("app/etl/settings/etl_configs.yaml")["data_sources"]["lightcast_skills"]
+        self.lightcast_skills_configs: dict = lightcast_skills_configs
         self.lightcast_skills_endpoints: dict= self.lightcast_skills_configs["endpoints"]
         self.access_token = self.get_access_token()
         

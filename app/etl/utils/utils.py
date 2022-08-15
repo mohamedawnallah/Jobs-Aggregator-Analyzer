@@ -2,10 +2,13 @@
 
 Reusable functions that are used throughout the application from different modules
 """
+from email import header
 import re
 from abc import ABC, abstractmethod
 from typing import Optional, Union, Generator, Any, Iterator, List
 from collections import namedtuple, defaultdict
+import urllib.request
+from urllib.request import Request
 import requests
 import yaml
 import bs4
@@ -31,7 +34,7 @@ class Utils:
     def get_valid_text(description: str) -> str:
         """Handling text format"""
         text = description.replace("\n", " ").lower().strip()
-        text = text.replace(",", " ")
+        text = text.replace(",", "")
         return text
 
     @staticmethod
@@ -87,15 +90,19 @@ class Utils:
     @staticmethod
     def get_html_page(url: str) -> BeautifulSoup:
         """Get the html for the given link"""
+        
+        headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
         while True:
             try:
-                jobs_response = requests.get(url)
-                break
+                with urllib.request.urlopen(Request(url, headers=headers)) as response:
+                    html = response.read()
+                    break
             except requests.exceptions.ConnectionError as connection_error:
+                logger.warning(f"Connection Error: {connection_error}")
                 continue
             except requests.exceptions.MissingSchema as missing_schema_error:
-                pass
-        return jobs_response.text
+                logger.error(f"Missing Schema Error: {missing_schema_error}")
+        return html
 
     @staticmethod
     def get_beautiful_soup(html: str) -> BeautifulSoup:

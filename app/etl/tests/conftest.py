@@ -3,32 +3,23 @@ from etl.scrappers.indeed_scrapper import IndeedScrapper
 from etl.scrappers.data_stack_jobs_scraper import DataStackJobsScraper
 from etl.utils.utils import Utils
 from etl.utils.job_specifications import OrSpecification,ProgrammingLanguagesSpecification,IngestTechSpecification, BachelorComputerScienceSpecification
+from etl.apis.job_skills_api import JobSkillsAPI
 
-@pytest.fixture
-def configs() -> dict:
+@pytest.fixture(scope="session")
+def etl_configs() -> dict:
     """Fixture for configs"""
     configs: dict = Utils.get_configs("app/etl/settings/etl_configs.yaml")
     return configs
 
-@pytest.fixture
-def job_specifications(configs: dict) -> dict:
-    """Fixture for job_specifications"""
-    job_specfications = ProgrammingLanguagesSpecification(configs) | IngestTechSpecification(configs) | BachelorComputerScienceSpecification(configs)
-    return job_specfications
 
-@pytest.fixture
-def indeed_scrapper(configs: dict, job_specifications: OrSpecification) -> "IndeedScrapper":
-    """Fixture for IndeedScrapper"""
-    indeed_scrapper: IndeedScrapper = IndeedScrapper(configs,job_specifications)
-    return indeed_scrapper
+@pytest.fixture(scope="session")
+def job_skills(etl_configs: dict) -> str:
+    """Fixture for job skills"""
+    skills_api = JobSkillsAPI(etl_configs["data_sources"]["lightcast_skills"])
+    skills: str = skills_api.get_latest_job_skills()
+    return skills
 
-@pytest.fixture()
-def data_stack_jobs_scraper(configs: dict) -> DataStackJobsScraper:
-    """Fixture for returning a DataStackJobsScraper object"""
-    return DataStackJobsScraper(configs=configs)
-
-@pytest.fixture
-def get_html_tags(configs: dict) -> list:
-    """Fixture for retrieving sample html for DataStackJobsScraper tests."""
-    html_tags = configs['html_elements']['html_tags']
-    return html_tags
+@pytest.fixture(scope="session")
+def indeed_scrapper(etl_configs: dict, job_skills: str) -> IndeedScrapper:
+    """Fixture for Indeed scrapper"""
+    return IndeedScrapper(etl_configs["data_sources"]["indeed"],job_skills)

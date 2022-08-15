@@ -5,13 +5,11 @@ name = "pypi"
 
 [packages]
 beautifulsoup4 = "*"
-requests = "*"
 fastapi = "*"
-responses = "*"
-loguru = "*"
+pandas = "*"
 pyyaml = "*"
 python-dotenv = "*"
-normality = "*"
+requests = "*"
 
 [dev-packages]
 pytest = "*"
@@ -20,12 +18,11 @@ pytest-rerunfailures="*"
 mkdocs = "*"
 mkdocstrings = {extras = ["python"], version = "*"}
 mkdocs-material = "*"
-black = "*"
 allure-pytest = "*"
 pytest-xdist = "*"
 pytest-sugar = "*"
+loguru = "*"
 yamllint = "*"
-pandas = "*"
 
 [requires]
 python_version = "3.9"
