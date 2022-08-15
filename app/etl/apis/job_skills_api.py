@@ -2,8 +2,8 @@ import os
 import json
 import re
 from typing import List
-import requests
 from dotenv import load_dotenv
+import requests
 from etl.utils.utils import Utils
 
 class JobSkillsAPI:
