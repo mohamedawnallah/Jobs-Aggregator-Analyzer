@@ -1,13 +1,26 @@
 version: '3.8'
 services:
-  etl:
-    build: 
-      context: ./etl
-      dockerfile: Dockerfile
-    stdin_open: true
-    tty: true
+  # etl:
+  #   build: 
+  #     context: ./etl
+  #     dockerfile: Dockerfile
+  #   stdin_open: true
+  #   tty: true
+  #   volumes:
+  #     - ./etl:/app
+  spark:
+    image: jupyter/pyspark-notebook
+    container_name: pyspark
     volumes:
-      - ./etl:/app
+      - ./app/etl/spark:/home/jovyan/work
+    ports:
+      - 8888:8888 # port for jupyter notebook
+      - 4050:4050 #Setting the port to 4050 to avoid conflicts with the Spark UI
+    env_file:
+      - app/etl/.env
+    
+
+
   
   # tests:
   #   image: data-research-jobs-tests:latest

@@ -6,7 +6,6 @@ Testing all the static methods of Utils class that are reused in other modules.
 from typing import Iterator, Type
 import pytest
 import requests
-import responses
 from bs4 import BeautifulSoup
 from etl.utils.utils import Utils
 
@@ -68,56 +67,8 @@ def test_get_configs() -> None:
     expected_result = dict
     assert isinstance(configs, expected_result)
 
-@pytest.mark.parametrize("key,expected_result", [
-    ("indeed", dict),
-    ("datastackjobs", dict),
-    ("company",dict),
-    ("job",dict),
-    ("job_basic_info",dict),
-    ("skills",dict),
-    ("devops",list),
-    ("invalid_key",type(None))
 
-])
-def test_get_value_key_attr(configs: dict, key: str, expected_result: Type) -> None:
-    """Test get_value_key_attr"""
-    result = Utils.get_value_of_key_from_dict(configs, key)
-    assert isinstance(result, expected_result)
-
-@pytest.mark.parametrize("job_spec_values,job_spec,job_description,expected_result", [
-    (["aws","azure","gcp"],"devops","aws is the best",[{"devops":"aws"}]),
-    (["aws","azure","gcp"],"devops","technology is the best",[{"devops":"N/A"}]),
-    (["aws","azure","gcp"],"devops","all cloud providers aws,gcp inclusive is the best and technology is the best",[{"devops":"aws"},{"devops":"gcp"}]),
-
-])
-def test_is_job_spec_satisfied(job_spec_values: list[str], job_spec: str, job_description: str, expected_result: Iterator[dict]) -> None:
-    """Test is_job_spec_satisfied"""
-    result: Iterator[dict] = Utils.is_job_spec_satisfied(job_spec_values, job_spec, job_description)
-    result_list = list(result)
-    assert result_list == expected_result
-
-
-@pytest.mark.parametrize("job_spec,degree_filter,job_description,expected_result", [
-    ("phd of computer science", ["phd","computer science"], "This job requires that you have phd of computer science is the best",str(True)),
-    ("phd of computer science", ["phd","computer science"], "You need to be very good at analytical skills", str(False)),
-    ("bachelor of computer science",["bachelor","computer science"],"Bachelor of COMPUTER SCIENCE",str(True))
-])
-def test_is_degree_filter_satisfied(job_spec: str, degree_filter: str, job_description: str, expected_result: bool) -> None:
-    """Test is_degree_filter_satisfied"""
-    result: Iterator[dict] = Utils.is_degree_filter_satisfied(job_spec, degree_filter, job_description)
-    result_dict: dict = next(result)
-    assert result_dict[job_spec] == expected_result
-
-@pytest.mark.parametrize("job_skills,expected_result", [
-    ({"programming_langauges":"python, c++, java"},False),
-    ({"programming_langauges":"N/A, ","devops":"jenkins, "},False),
-    ({"programming_langauges":"N/A, ","devops":"N/A, "},True)
-])
-def test_are_all_job_skills_null(job_skills: dict, expected_result: bool) -> None:
-    """Test are_all_job_skills_null"""
-    result = Utils.are_all_job_skills_null(job_skills)
-    assert result is expected_result
-
+    
 # @responses.activate
 # def test_get_page_parsed() -> None:
 #     """Ensure that indeed jobs html example is parsed correctly"""

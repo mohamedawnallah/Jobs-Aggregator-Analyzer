@@ -57,7 +57,7 @@ class IndeedPagesNoTransformer(JobPagesNoTransformer):
         if len(pages_no) == 2:
             pages_no = Utils.get_valid_value(pages_no_raw)
             pages_no: list[str] = Utils.get_numbers_from_string(pages_no)
-            pages_no = min(pages_no) * 10
+            pages_no = min(pages_no)
             return pages_no
 
 class IndeedCountriesTransformer(CountriesTransformer):
