@@ -27,11 +27,11 @@ jobs:
     
     - name: Upgrade pip
       run: |
-        pip3 install --upgrade pip
+        pip install --upgrade pip
 
     - name: Install pipenv
       run: |
-        pip3 install pipenv
+        pip install pipenv
 
     - name: Install dependencies
       run: |
