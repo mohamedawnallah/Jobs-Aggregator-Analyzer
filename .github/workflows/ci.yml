@@ -30,16 +30,11 @@ jobs:
         pip install --upgrade pip
 
     - name: Install pipenv
-      run: |
-        pip install pipenv
+      uses: dschep/install-pipenv-action@v1
 
     - name: Install dependencies
       run: |
         pipenv install --dev
-    
-    - name: Install Certifi
-      run: |
-        pipenv install certifi
 
     - name: Lint with flake8
       run: |
