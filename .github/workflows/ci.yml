@@ -30,7 +30,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pipenv install -dev
+        pipenv install --dev
 
     - name: Lint with flake8
       run: |
