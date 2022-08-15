@@ -10,6 +10,7 @@ pandas = "*"
 pyyaml = "*"
 python-dotenv = "*"
 requests = "*"
+certifi = "*"
 
 [dev-packages]
 pytest = "*"
