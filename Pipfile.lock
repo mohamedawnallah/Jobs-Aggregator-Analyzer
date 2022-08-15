@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "51747a16a6c2f34e205cf2703248551dfb74dec50f9e6c8046bc633f95a9f396"
+            "sha256": "23cbda04dedddff4c8dcfc875f37b4b0ba57de27ec07627c7674c3221f054250"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -31,22 +31,6 @@
             ],
             "index": "pypi",
             "version": "==4.11.1"
-        },
-        "certifi": {
-            "hashes": [
-                "sha256:84c85a9078b11105f04f3036a9482ae10e4621616db313fe045dd24743a0820d",
-                "sha256:fe86415d55e84719d75f8b69414f6438ac3547d2078ab91b67e779ef69378412"
-            ],
-            "markers": "python_full_version >= '3.6.0'",
-            "version": "==2022.6.15"
-        },
-        "charset-normalizer": {
-            "hashes": [
-                "sha256:5189b6f22b01957427f35b6a08d9a0bc45b46d3788ef5a92e978433c7a35f8a5",
-                "sha256:575e708016ff3a5e3681541cb9d79312c416835686d054a23accb873b254f413"
-            ],
-            "markers": "python_full_version >= '3.6.0'",
-            "version": "==2.1.0"
         },
         "fastapi": {
             "hashes": [
@@ -228,14 +212,6 @@
             "index": "pypi",
             "version": "==6.0"
         },
-        "requests": {
-            "hashes": [
-                "sha256:7c5599b102feddaa661c826c56ab4fee28bfd17f5abca1ebbe3e7f19d7c97983",
-                "sha256:8fefa2a1a1365bf5520aac41836fbee479da67864514bdb821f31ce07ce65349"
-            ],
-            "index": "pypi",
-            "version": "==2.28.1"
-        },
         "six": {
             "hashes": [
                 "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926",
@@ -275,14 +251,6 @@
             ],
             "markers": "python_version < '3.10'",
             "version": "==4.3.0"
-        },
-        "urllib3": {
-            "hashes": [
-                "sha256:c33ccba33c819596124764c23a97d25f32b28433ba0dedeb77d873a38722c9bc",
-                "sha256:ea6e8fb210b19d950fab93b60c9009226c63a28808bc8386e05301e25883ac0a"
-            ],
-            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4, 3.5' and python_version < '4'",
-            "version": "==1.26.11"
         }
     },
     "develop": {
@@ -508,13 +476,6 @@
             "markers": "python_version >= '3.6'",
             "version": "==21.3"
         },
-        "pathspec": {
-            "hashes": [
-                "sha256:7d15c4ddb0b5c802d161efc417ec1a2558ea2653c2e8ad9c19098201dc1c993a",
-                "sha256:e564499435a2673d586f6b2130bb5b95f04a3ba06f81b8f895b651a3c76aabb1"
-            ],
-            "version": "==0.9.0"
-        },
         "pluggy": {
             "hashes": [
                 "sha256:4224373bacce55f955a878bf9cfa763c1e360858e330072059e10bad68531159",
@@ -587,14 +548,6 @@
             "markers": "python_version >= '3.6'",
             "version": "==1.4.0"
         },
-        "pytest-rerunfailures": {
-            "hashes": [
-                "sha256:9e1e1bad51e07642c5bbab809fc1d4ec8eebcb7de86f90f1a26e6ef9de446697",
-                "sha256:d31d8e828dfd39363ad99cd390187bf506c7a433a89f15c3126c7d16ab723fe2"
-            ],
-            "index": "pypi",
-            "version": "==10.2"
-        },
         "pytest-sugar": {
             "hashes": [
                 "sha256:3da42de32ce4e1e95b448d61c92804433f5d4058c0a765096991c2e93d5a289f",
@@ -666,14 +619,6 @@
             "markers": "python_version >= '3.6'",
             "version": "==0.1"
         },
-        "setuptools": {
-            "hashes": [
-                "sha256:d73f8cd714a1a6691f5eb5abeeacbf313242b7aa2f5eba93776542c1aad90c6f",
-                "sha256:fe9a97f68b064a6ddd4bacfb0b4b93a4c65a556d97ce906255540439d0c35cef"
-            ],
-            "markers": "python_version >= '3.7'",
-            "version": "==65.0.0"
-        },
         "six": {
             "hashes": [
                 "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926",
@@ -726,13 +671,6 @@
             ],
             "markers": "python_version >= '3.6'",
             "version": "==2.1.9"
-        },
-        "yamllint": {
-            "hashes": [
-                "sha256:e688324b58560ab68a1a3cff2c0a474e3fed371dfe8da5d1b9817b7df55039ce"
-            ],
-            "index": "pypi",
-            "version": "==1.27.1"
         },
         "zipp": {
             "hashes": [
