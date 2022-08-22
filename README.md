@@ -61,6 +61,11 @@ We're looking to better understand **what skills, expected market salary for dat
 # 🏢 Data Warehouse Schema Design
 ![Data Warehouse Schema Design](https://github.com/mhmdawnallah/Data-Jobs-Research/blob/feature/readme/diagrams/Data%20Warehouse%20Schema%20Design.png)
 
+# Conclusion
+- How did this project turn out
+- What major things have you learned
+- What were the biggest challenges
+
 <!-- ## Connect
 ## Buffer
 ## Processing
