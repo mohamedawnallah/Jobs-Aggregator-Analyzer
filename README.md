@@ -57,9 +57,9 @@ We're looking to better understand **what skills, expected market salary for dat
 - Explain the pipelines for processing that you are building
 - Go through your development and add your source code -->
 # ⇔ Data Pipeline Architecture
-![Data Pipeline Architecture](https://github.com/mhmdawnallah/Data-Jobs-Research/blob/feature/readme/diagrams/Data%20Pipeline%20Architecture.png)
+![Data Pipeline Architecture](https://github.com/mhmdawnallah/Data-Jobs-Research/blob/main/readme/diagrams/Data%20Pipeline%20Architecture.png)
 # 🏢 Data Warehouse Schema Design
-![Data Warehouse Schema Design](https://github.com/mhmdawnallah/Data-Jobs-Research/blob/feature/readme/diagrams/Data%20Warehouse%20Schema%20Design.png)
+![Data Warehouse Schema Design](https://github.com/mhmdawnallah/Data-Jobs-Research/blob/main/readme/diagrams/Data%20Warehouse%20Schema%20Design.png)
 
 # Conclusion
 - How did this project turn out
