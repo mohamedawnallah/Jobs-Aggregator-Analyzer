@@ -1,9 +1,9 @@
 import pytest
 from etl.scrappers.indeed_scrapper import IndeedScrapper
 from etl.scrappers.data_stack_jobs_scraper import DataStackJobsScraper
-from etl.utils.utils import Utils
-from etl.utils.job_specifications import OrSpecification,ProgrammingLanguagesSpecification,IngestTechSpecification, BachelorComputerScienceSpecification
-from etl.apis.job_skills_api import JobSkillsAPI
+from etl.utilities.utils import Utils
+from etl.utilities.job_specifications import OrSpecification,ProgrammingLanguagesSpecification,IngestTechSpecification, BachelorComputerScienceSpecification
+from apis.lightcast.job_skills_apis import JobSkillsAPI
 
 @pytest.fixture(scope="session")
 def etl_configs() -> dict:

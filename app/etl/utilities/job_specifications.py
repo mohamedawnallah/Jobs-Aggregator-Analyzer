@@ -1,7 +1,7 @@
 from collections import defaultdict
 from typing import Optional, Union, Any
 from abc import abstractmethod, ABC
-from utils.utils import Utils
+from etl.utilities.utils import Utils
 
 
 class BaseSpecification:

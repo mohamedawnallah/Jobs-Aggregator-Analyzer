@@ -6,7 +6,7 @@ Testing all the static methods of Utils class that are reused in other modules.
 from typing import Iterator, Type
 import pytest
 from bs4 import BeautifulSoup
-from etl.utils.utils import Utils
+from etl.utilities.utils import Utils
 
 @pytest.mark.parametrize("text, expected_result", [
     ("", ""),
@@ -66,22 +66,4 @@ def test_get_configs() -> None:
     expected_result = dict
     assert isinstance(configs, expected_result)
 
-
     
-# @responses.activate
-# def test_get_page_parsed() -> None:
-#     """Ensure that indeed jobs html example is parsed correctly"""
-#     url = "https://www.indeed.com/invalid/jobs?q=Data%20Engineering"
-#     jobs_example_html_path: str = "app/etl/tests/resources/test_utils/indeed_jobs_example.html"
-#     with open(jobs_example_html_path, "r",encoding="utf-8") as fh:
-#         html = fh.read()
-#         responses.add(
-#             responses.GET,
-#             url=url,
-#             body=html,
-#             status=200,
-#             content_type="text/html",
-#         )
-#     expected_result = BeautifulSoup
-#     page_parsd: BeautifulSoup = Utils.get_page_parsed(url)
-#     assert isinstance(page_parsd, expected_result)

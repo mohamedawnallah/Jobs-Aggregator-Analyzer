@@ -1,5 +1,5 @@
 import functools
-from this import d
+from os import access
 import time
 from typing import Callable, Any
 from loguru import logger
@@ -18,6 +18,7 @@ def timer(func) -> Decorator:
         end_time = time.perf_counter()
         run_time = end_time - start_time
         message = f"{func.__name__!r} took {run_time:.4f} seconds"
+        print(message)
         # logger.debug(message)
         return value
 
@@ -52,3 +53,6 @@ def debug(func) -> Decorator:
         return value
 
     return wrapper_debug
+
+
+    

@@ -11,6 +11,9 @@ pyyaml = "*"
 python-dotenv = "*"
 requests = "*"
 certifi = "*"
+aiohttp = "*"
+aiostream = "*"
+pandarallel = "*"
 
 [dev-packages]
 pytest = "*"
@@ -25,3 +28,5 @@ loguru = "*"
 
 [requires]
 python_version = "3.9"
+
+[scripts]

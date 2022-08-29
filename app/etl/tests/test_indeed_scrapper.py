@@ -8,7 +8,7 @@ import pytest
 import bs4
 
 from etl.scrappers.indeed_scrapper import IndeedScrapper
-from etl.utils.utils import Utils
+from etl.utilities.utils import Utils
 from etl.models.job_models import CompanyBasicInfo, Country, JobBasicInfo, JobFullInfo
 
 def test_get_indeed_countries(indeed_scrapper: IndeedScrapper) -> None:

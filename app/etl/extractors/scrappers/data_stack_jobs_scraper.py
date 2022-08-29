@@ -11,7 +11,7 @@ import json
 import re
 from bs4 import BeautifulSoup
 import requests
-from etl.utils.utils import Utils
+from etl.utilities.utils import Utils
 
 utils = Utils()
 configs = utils.get_configs()

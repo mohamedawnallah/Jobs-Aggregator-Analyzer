@@ -2,19 +2,14 @@
 
 Reusable functions that are used throughout the application from different modules
 """
-from email import header
+import concurrent.futures
 import re
-from abc import ABC, abstractmethod
-from typing import Optional, Union, Generator, Any, Iterator, List
-from collections import namedtuple, defaultdict
-import urllib.request
-import urllib.error
-from urllib.request import Request
+from typing import Iterable, Union, Generator, Iterator, List
 import yaml
-import urllib
 import bs4
+import aiohttp
 from bs4 import BeautifulSoup
-from loguru import logger
+from dotenv import load_dotenv
 
 class Utils:
     """Utils Class"""
@@ -35,6 +30,7 @@ class Utils:
     def get_valid_text(description: str) -> str:
         """Handling text format"""
         text = description.replace("\n", " ").lower().strip()
+        text = re.sub(' +', ' ', text)
         text = text.replace(",", "")
         return text
 
@@ -48,63 +44,72 @@ class Utils:
     def are_all_words_found(search_words: list[str], text):
         """Check if all the whole words is found in the given text"""
         text = Utils.get_valid_text(text)
+
         for search_word in search_words:
             is_word_found = Utils.is_word_found(search_word, text)
             if not is_word_found:
-                return False
+                continue
         return True
-    
+
     @staticmethod
-    def get_all_found_words(search_words: str, text) -> str:
+    def get_all_found_words(search_words: List[str], text) -> str:
         """Get all the found words in the given text"""
         text = Utils.get_valid_text(text)
-        found_words = []
-        for search_word in search_words.split(","):
-            search_words_in_word: List[str] = search_word.split('|')
-            for given_word in search_words_in_word[::-1]:
-                is_word_found = Utils.is_word_found(given_word, text)
-                if is_word_found:
-                    if given_word not in found_words:
-                        found_words.append(given_word)
-                    break
-        found_words: str = ','.join(found_words)
-        return found_words
+        search_words: str = "|".join(search_words)
+        search_pattern = r"\b" + fr"({search_words})" + r"\b"
+
+        all_words_found: List[str] = re.findall(search_pattern, text)
+        all_words_found: str = ', '.join(all_words_found)
+        return all_words_found
+        # all_search_words_found = ""
+        # search_words_list: List[str] = list(search_words)
+        # search_words_chunker_count: int = 15
+        # search_words_chunker_generator = Utils.chunker(search_words_list,search_words_chunker_count)
+        # with concurrent.futures.ProcessPoolExecutor() as executor:
+        #     search_words_results = []
+        #     for search_words_chunked_list in search_words_chunker_generator:
+        #         search_words_result = executor.submit(Utils._get_all_found_words_helper,search_words_chunked_list,text)
+        #         search_words_results.append(search_words_result)
+        #     for search_words_final_result in concurrent.futures.as_completed(search_words_results):
+        #         search_words_found = search_words_final_result.result()
+        #         if search_words_found:
+        #             all_search_words_found += search_words_found 
+        # return all_search_words_found
+
 
     @staticmethod
     def is_word_found(search_word: str, text: str) -> bool:
         """Check if the word is found in the given text"""
         search_word = Utils.get_valid_text(search_word)
-        text = Utils.get_valid_text(text)
         search_pattern = r"\b" + re.escape(search_word) + r"\b"
         if not re.search(search_pattern, text):
             return False
         return True
-
     
     @staticmethod
-    def get_page_parsed(url: str) -> BeautifulSoup:
+    async def get_page_parsed(url: str) -> BeautifulSoup:
         """Get the parsed page of the given html"""
-        html: str = Utils.get_html_page(url)
+        html: str = await Utils.get_html_page(url)
         soup: BeautifulSoup = Utils.get_beautiful_soup(html)
         return soup
 
     @staticmethod
-    def get_html_page(url: str) -> BeautifulSoup:
+    async def get_html_page(url: str) -> BeautifulSoup:
         """Get the html for the given link"""
-        
         headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
+
         while True:
             try:
-                with urllib.request.urlopen(Request(url, headers=headers)) as response:
-                    html = response.read()
-                    break
-            except urllib.error.HTTPError as connection_error:
-                logger.warning(f"Connection Error: {connection_error}")
+                async with aiohttp.ClientSession(headers=headers) as session:
+                    response = await session.request('GET',url)
+                    html = await response.text()
+                    return html
+            except aiohttp.ClientConnectionError as connection_error:
+                print(f"Connection Error: {connection_error}")
                 continue
-            except urllib.error.URLError as missing_schema_error:
-                logger.error(f"Missing Schema Error: {missing_schema_error}")
-        return html
-
+            except aiohttp.ClientError as missing_schema_error:
+                print(f"Missing Schema Error: {missing_schema_error}")
+                
     @staticmethod
     def get_beautiful_soup(html: str) -> BeautifulSoup:
         """Get beautiful soup object"""
@@ -144,7 +149,6 @@ class Utils:
         if not yielded:        
             yield {job_spec: "N/A"}
 
-
     @staticmethod
     def is_degree_filter_satisfied(
         job_spec: str, degree_filter: list[str], job_description: str
@@ -156,11 +160,12 @@ class Utils:
         else:
             yield {job_spec: str(is_degree_filter_satisfied)}
 
+    @staticmethod
+    def load_env_file(env_file_path: str) -> bool:
+        is_env_file_loaded = load_dotenv(dotenv_path=env_file_path)
+        return is_env_file_loaded
 
     @staticmethod
-    def are_all_job_skills_null(job_skills: dict[str]) -> bool:
-        """Check if all the job skills are null"""
-        for job_skill in job_skills.values():
-            if not job_skill.startswith("N/A"):
-                return False
-        return True
+    def chunker(seq, size) -> Generator[Iterable,None,None]:
+        """Chunk iterable to small multiple yielded pieces based on given size"""
+        return (seq[pos:pos + size] for pos in range(0, len(seq), size))

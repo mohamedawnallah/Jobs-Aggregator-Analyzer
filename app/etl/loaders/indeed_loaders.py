@@ -3,9 +3,9 @@ import json
 
 from loguru import logger
 from app.utilities import decorators
-from etl.utils.etls_common import CSVPersistenceManager
+from common.etls_common import CSVPersistenceManager
 from typing import Iterator
-from etl.utils.utils import Utils
+from etl.utilities.utils import Utils
 from models.job_models import JobFullInfo
 
 class IndeedPersistenceManager(CSVPersistenceManager):
