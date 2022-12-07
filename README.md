@@ -1,9 +1,9 @@
 # ✨ Background
-We're looking to better understand **what skills, expected market salary for data jobs based on seniority level?** to learn the most in-demand ones and to be fairly paid too also see **if the given data job title is going more in-demand?** and **how positively or negatively people talking about on twitter platform?**. We felt the best places to start are job search platforms and twitter, so this is our start at this project.
+We're looking to better understand **what skills, expected market salary for jobs based on seniority level?** to learn the most in-demand ones and to be fairly paid too also see **if the given data job title is going more in-demand?** and **how positively or negatively people talking about on twitter platform?**. We felt the best places to start are job search platforms and twitter, so this is our start at this project.
 
 # 💡Jobs Aggregator Analyzer Features
 - Getting the latest jobs based on the given job title [Duplication in Consideration] and many other filters criteria(country,remote,seniority, ...etc).
-- Getting the latest data job requirements based on the given job title and many other filter criterias.
+- Getting the latest job requirements based on the given job title and many other filter criterias.
 - Analyzing the jobs skills/degrees requirements through visualizations 📈 📉.
 - Implementing APIs for our project so end-users/BI-users can implement their own analysis and getting other insights 📊
 - Seeing if the given job title in-demand's increasing or not through many criterias(e.g: jobs posted on different times, ...etc)
@@ -19,8 +19,8 @@ We're looking to better understand **what skills, expected market salary for dat
 - Documenting our project along the way.
 
 # 🎯 End-Goals (User-Stories)
-- As a BI/frontend user, I want to get the latest data jobs based on my given inputs(e.g: job_title) and the available search filters from the available APIs so that I keep aware of available jobs in my area.
-- As a BI/Data-Science/frontend user, I want to get the most in-demand job skills/degree required for my given job title and the available search filters from the available APIs so that I keep my data skills up-to-date and always in-demand.
+- As a BI/frontend user, I want to get the latest jobs based on my given inputs(e.g: job_title) and the available search filters from the available APIs so that I keep aware of available jobs in my area.
+- As a BI/Data-Science/frontend user, I want to get the most in-demand job skills/degree required for my given job title and the available search filters from the available APIs so that I keep my job skills up-to-date and always in-demand.
 - As a BI/Frontend user, I want to see good documented APIs and hosted somewhere(e.g: our frontend website, github, ...etc) so that I can make most use of the available functionalities provided by the APIs also use it properly.
 - As a(an) User/Employer/Company, I want to see interactive visualizations regards data job skills on a frindly, user-experienced, fast connection website so that I'm aware about current market research in data area also if employer/company I could hire the most in-demand skills so there are no shortage of talents who have these skills.
 - As a User, I want to see interactive visualizations regards  data jobs which are in-demand so that I keep on top of the market and keep up-to-date to the market demand.
