@@ -2,7 +2,7 @@
 We're looking to better understand **what skills, expected market salary for data jobs based on seniority level?** to learn the most in-demand ones and to be fairly paid too also see **if the given data job title is going more in-demand?** and **how positively or negatively people talking about on twitter platform?**. We felt the best places to start are job search platforms and twitter, so this is our start at this project.
 
 # 💡Jobs Aggregator Analyzer Features
-- Getting the latest data jobs based on the given job title [Duplication in Consideration] and many other filters criteria(country,remote,seniority, ...etc).
+- Getting the latest jobs based on the given job title [Duplication in Consideration] and many other filters criteria(country,remote,seniority, ...etc).
 - Getting the latest data job requirements based on the given job title and many other filter criterias.
 - Analyzing the jobs skills/degrees requirements through visualizations 📈 📉.
 - Implementing APIs for our project so end-users/BI-users can implement their own analysis and getting other insights 📊
