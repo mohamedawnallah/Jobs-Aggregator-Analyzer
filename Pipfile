@@ -14,6 +14,12 @@ certifi = "*"
 aiohttp = "*"
 aiostream = "*"
 pandarallel = "*"
+loguru = "*"
+langdetect = "*"
+ctranslate2 = "==2.24.0"
+deep-translator = "*"
+googletrans = "==4.0.0-rc1"
+translate = "*"
 
 [dev-packages]
 pytest = "*"
@@ -27,6 +33,6 @@ pytest-sugar = "*"
 loguru = "*"
 
 [requires]
-python_version = "3.9"
+python_version = "3.11"
 
 [scripts]

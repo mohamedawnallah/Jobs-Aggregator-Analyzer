@@ -3,9 +3,26 @@ from os import access
 import time
 from typing import Callable, Any
 from loguru import logger
-
-
+from utilities.helpers import get_function_string_repr
 Decorator = Callable
+
+def timer_async(func) -> Decorator:
+    """Print the runtime of the decorated function"""
+
+    @functools.wraps(func)
+    async def wrapper_timer(*args, **kwargs) -> Any:
+        """Wrapper Timer"""
+        func_string_representation: str = get_function_string_repr(func)
+        message = f"Starting {func_string_representation}..."
+        logger.debug(message)
+        start_time = time.perf_counter()
+        value = await func(*args, **kwargs)
+        end_time = time.perf_counter()
+        run_time = end_time - start_time
+        message = f"{func_string_representation} took {run_time:.4f} seconds {run_time/60:.4f} minutes"
+        logger.debug(message)
+        return value
+    return wrapper_timer
 
 def timer(func) -> Decorator:
     """Print the runtime of the decorated function"""
@@ -13,17 +30,17 @@ def timer(func) -> Decorator:
     @functools.wraps(func)
     def wrapper_timer(*args, **kwargs) -> Any:
         """Wrapper Timer"""
+        func_string_representation: str = get_function_string_repr(func=func)
+        message = f"Starting {func_string_representation}..."
+        logger.debug(message)
         start_time = time.perf_counter()
         value = func(*args, **kwargs)
         end_time = time.perf_counter()
         run_time = end_time - start_time
-        message = f"{func.__name__!r} took {run_time:.4f} seconds"
-        print(message)
-        # logger.debug(message)
+        message = f"{func_string_representation} took {run_time:.4f} seconds {run_time/60:.4f} minutes"
+        logger.debug(message)
         return value
-
     return wrapper_timer
-
 
 def slow_down(func) -> Decorator:
     """Sleep 1 second before calling the function"""
