@@ -57,9 +57,9 @@ We're looking to better understand **what skills, expected market salary for job
 - Explain the pipelines for processing that you are building
 - Go through your development and add your source code -->
 # ⇔ Data Pipeline Architecture
-![Data Pipeline Architecture](https://github.com/mhmdawnallah/Data-Jobs-Research/blob/main/diagrams/Data%20Pipeline%20Architecture.png)
-# 🏢 Data Warehouse Schema Design
-![Data Warehouse Schema Design](https://github.com/mhmdawnallah/Data-Jobs-Research/blob/main/diagrams/Data%20Warehouse%20Schema%20Design.png)
+![Data Pipeline Architecture](assets/data_pipeline_architecture.png)
+# 🏢 Data Warehouse Schema Design Process
+![Conceptual Data Model](assets/conceptual_data_model.png)
 
 # Conclusion
 - How did this project turn out
