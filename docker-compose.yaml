@@ -1,5 +1,44 @@
 version: '3.8'
 services:
+  db:
+    image: postgres:14.5-alpine
+    container_name: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - db:/var/lib/postgresql/data
+
+  sqlpad:
+    image: sqlpad/sqlpad:latest
+    container_name: sqlpad
+    hostname: sqlpad
+    depends_on:
+      - db
+    ports:
+      - 3000:3000
+    environment:
+      SQLPAD_ADMIN: 'admin@sqlpad.com'
+      SQLPAD_ADMIN_PASSWORD: 'admin'
+      SQLPAD_AUTH_DISABLED: "true"
+      SQLPAD_AUTH_DISABLED_DEFAULT_ROLE: "admin"
+      SQLPAD_APP_LOG_LEVEL: debug
+      SQLPAD_WEB_LOG_LEVEL: warn
+      SQLPAD_SEED_DATA_PATH: /etc/sqlpad/seed-data
+      SQLPAD_CONNECTIONS__pgdemo__name: Postgres
+      SQLPAD_CONNECTIONS__pgdemo__driver: postgres
+      SQLPAD_CONNECTIONS__pgdemo__host: postgres
+      SQLPAD_CONNECTIONS__pgdemo__database: postgres
+      SQLPAD_CONNECTIONS__pgdemo__username: postgres
+      SQLPAD_CONNECTIONS__pgdemo__password: postgres
+      SQLPAD_CONNECTIONS__pgdemo__multiStatementTransactionEnabled: 'true'
+      SQLPAD_CONNECTIONS__pgdemo__idleTimeoutSeconds: 86400
+    volumes:
+      - db_gui:/etc/sqlpad/seed-data
+
   # etl:
   #   build: 
   #     context: ./etl
@@ -19,18 +58,9 @@ services:
     env_file:
       - app/etl/.env
     
-
-
   
-  # tests:
-  #   image: data-research-jobs-tests:latest
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile.dev
-  #   volumes:
-  #     - ./app:/app
-  #     - ./tests:/app/tests
-  #   command: ["pytest", "-v", "--reruns", "5", "--reruns-delay", "1"]
-
-
-
+volumes:
+  db:
+    driver: local
+  db_gui:
+    driver: local

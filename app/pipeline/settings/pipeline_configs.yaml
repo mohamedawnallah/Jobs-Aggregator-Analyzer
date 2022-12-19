@@ -1,0 +1,53 @@
+data_sources:
+  job_platforms:
+    indeed:
+      url: https://www.indeed.com
+      jobs_base_url: "https://%(country_code)s.indeed.com/jobs?q=%(job_title)s"
+      job_base_url: "https://www.indeed.com/viewjob?jk=%(job_id)s"
+      company_base_url: "https://www.indeed.com/cmp/%(company_name)s"
+      comapny_reviews_base_url: "https://www.indeed.com/cmp/%(company_name)s/reviews?fcountry=ALL"
+      countries_url: https://www.indeed.com/worldwide
+    linkedin:
+      url: https://www.linkedin.com
+  company_platforms:
+    the_companies_api:
+      url: https://www.thecompaniesapi.com
+      endpoints:
+    fortune_companies:
+      url: https://fortune.com/wp-json/irving/v1/data/franchise-search-results?list_id=3287962&token=Zm9ydHVuZTpCcHNyZmtNZCN5SndjWkkhNHFqMndEOTM=
+      method_type: GET
+      more_info: https://fortune.com/global500/
+  helpers:
+    lightcast:
+      auth:
+        url: https://auth.emsicloud.com/connect/token
+        method_type: POST
+        more_info: "https://api.emsidata.com/apis/skills#authentication"
+      lightcast_skills:
+        url: https://api.emsidata.com/apis/skills
+        endpoints:
+          service_status:
+            url: https://emsiservices.com/skills/status
+            method_type: GET
+            more_info: "https://api.emsidata.com/apis/skills#get-get-service-status"
+          meta:
+            url: https://emsiservices.com/skills/meta
+            method_type: GET
+            more_info: "https://api.emsidata.com/apis/skills#get-get-service-metadata"
+          latest_version_metadata:
+            url: https://emsiservices.com/skills/versions/latest
+            method_type: GET
+            more_info: "https://api.emsidata.com/apis/skills#get-get-version-metadata"
+          latest_skills:
+            url: https://emsiservices.com/skills/versions/latest/skills
+            method_type: GET
+            more_info: "https://api.emsidata.com/apis/skills#get-list-all-skills"
+    libretranslate:
+      url: https://libretranslate.com/
+      
+
+storage:
+  staging:
+    csv: "app/pipeline/static/data/staging/%(file_name)s"
+  production:
+    csv: "app/pipeline/static/data/production/%(file_name)s"
