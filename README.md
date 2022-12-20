@@ -59,6 +59,7 @@ We're looking to better understand **what skills, expected market salary for job
 # ⇔ Data Pipeline Architecture
 ![Data Pipeline Architecture](assets/data_pipeline_architecture.png)
 # 🏢 Data Warehouse Schema Design Process
+
 ![Conceptual Data Model](assets/conceptual_data_model.png)
 
 # Conclusion
