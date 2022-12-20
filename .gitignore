@@ -6,7 +6,8 @@
 # website: http://jupyter.org/
 
 # End of https://www.toptal.com/developers/gitignore/api/python,jupyternotebooks
-app/etl/.env
+.env
+app/pipeline/settings/api_keys.txt
 
 # ignore Allure reports
 reports
