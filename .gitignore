@@ -290,4 +290,5 @@ spark-warehouse/
 
 
 # End of https://www.toptal.com/developers/gitignore/api/spark
-jenkins
+jenkins g
+data_modelling_mistakes.txt
