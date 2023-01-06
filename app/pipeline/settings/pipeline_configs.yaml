@@ -13,6 +13,9 @@ data_sources:
     the_companies_api:
       url: https://www.thecompaniesapi.com
       endpoints:
+        by_name:
+          url: "https://api.thecompaniesapi.com/v1/companies/by-name/%(company_name)s"
+          method_type: GET
     fortune_companies:
       url: https://fortune.com/wp-json/irving/v1/data/franchise-search-results?list_id=3287962&token=Zm9ydHVuZTpCcHNyZmtNZCN5SndjWkkhNHFqMndEOTM=
       method_type: GET
@@ -47,6 +50,8 @@ data_sources:
       
 
 storage:
+  raw:
+    csv: "app/pipeline/static/data/raw/%(file_name)s"
   staging:
     csv: "app/pipeline/static/data/staging/%(file_name)s"
   production:
