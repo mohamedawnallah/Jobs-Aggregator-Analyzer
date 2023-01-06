@@ -9,7 +9,6 @@ class CountriesScrapper(ABC):
         self, countries_no: Optional[int] = None
     ) -> Iterator[CountryDim]:
         """Get the list of countries supported by indedd"""
-
 class PagesNoScrapper(ABC):
     """Pages No Scrapper"""
     @abstractmethod

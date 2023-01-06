@@ -25,7 +25,7 @@ class IndeedJobsScrapper(ExtractorAsync, PagesNoScrapper,JobsScrapper):
         self.job_base_url = indeed_configs['job_base_url']
         self.company_base_url = indeed_configs['company_base_url']
     
-    async def extract(self, countries: Generator[CountryDim, None, None], job_title: str, pages_no: Optional[int] = None) -> BeautifulSoup:
+    async def extract(self, countries: Generator[CountryDim, None, None], job_title: str, pages_no: Optional[int] = None) -> pd.DataFrame:
         """Extract the Indeed Jobs HTML"""
         job_dim_countries_generator: List[AsyncGenerator[JobDim,None]] =  await self.get_jobs_in_countries(countries, job_title, pages_no)
         jobs_df = await self.get_jobs_in_countries_df(job_dim_countries_generator)

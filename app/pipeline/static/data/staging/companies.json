@@ -1,0 +1,306 @@
+{
+    "companies": [
+        {
+            "alexaRank": null,
+            "analyzedAt": "2022-12-25T16:27:27.000Z",
+            "businessType": null,
+            "city": {
+                "address": "1600 amphitheatre parkway",
+                "code": "mountain-view|california|us",
+                "latitude": "37.3893889",
+                "longitude": "-122.0832101",
+                "name": "Mountain View",
+                "postcode": null
+            },
+            "codeNaics": null,
+            "codeSic": null,
+            "companiesAcquisitions": [
+                {
+                    "descriptionShort": "",
+                    "domain": "synergyse.com",
+                    "id": 17359790,
+                    "name": "synergyse"
+                }
+            ],
+            "companiesSimilar": [
+                {
+                    "descriptionShort": "At Microsoft, our mission is to empower every person and every organization on the planet to achieve more.",
+                    "domain": "microsoft.com",
+                    "id": 16743585,
+                    "name": "Microsoft",
+                    "similitude": "100"
+                },
+                {
+                    "descriptionShort": "Amazon is guided by four principles: customer obsession rather than competitor focus, passion for invention, commitment to operational excellence, and long-term thinking.",
+                    "domain": "aboutamazon.com",
+                    "id": 7235,
+                    "name": "Amazon",
+                    "similitude": "100"
+                },
+                {
+                    "descriptionShort": "LinkedIn\uff08\u9886\u82f1\uff09\u662f\u5168\u7403\u6700\u5927\u7684\u804c\u4e1a\u793e\u4ea4\u7f51\u7ad9\uff0c\u4e8e 2003 \u5e74 5 \u6708 5 \u65e5\u6b63\u5f0f\u4e0a\u7ebf\uff0c\u76ee\u524d\u7528\u6237\u4eba\u6570\u8d85\u8fc74\u4ebf\uff0c\u8986\u76d6\u5168\u7403 200 \u591a\u4e2a\u56fd\u5bb6\uff0c\u62e5\u6709 23 \u79cd\u5b98\u65b9\u8bed\u8a00 \u7248\u672c\u3002\u9886\u82f1\u7684\u4f7f\u547d\u662f\u8fde\u63a5\u5168\u7403\u804c\u573a\u4eba\u58eb\uff0c\u4f7f\u4ed6\u4eec\u4e8b\u534a\u529f\u500d\uff0c\u53d1\u6325\u6240\u957f\uff1b\u66f4\u957f\u8fdc\u7684\u613f\u666f\u5219\u662f\u4e3a\u5168\u740333 \u4ebf\u52b3\u52a8\u529b\u521b\u9020\u5546\u4e1a\u673a\u4f1a\uff0c\u8fdb\u800c\u521b\u5efa\u4e16\u754c\u9996\u4e2a\u7ecf\u6d4e\u56fe\u8c31\u3002 \u9886\u82f1\u4e3a\u4f1a\u5458\u63d0\u4f9b\u7684\u6838\u5fc3\u4ef7\u503c\u5305\u62ec\uff1a\u804c\u4e1a\u8eab\u4efd\u3001\u77e5\u8bc6\u6d1e\u5bdf\u3001\u5546\u4e1a\u673a\u4f1a\u3002\u5728\u8fd9\u4e2a\u804c\u4e1a\u793e\u4ea4\u7f51\u7edc\u5e73\u53f0\u4e0a\uff0c\u6bcf\u5929\u4ea7\u751f 4500 \u591a\u4e07\u7b80\u5386\u6d4f\u89c8\uff0c\u6bcf\u5e74\u53d1\u751f 57 \u4ebf\u6b21\u804c\u4e1a\u641c\u7d22\u3002450 \u4f4d\u5168\u7403\u6700\u5177\u5f71\u54cd\u529b\u7684\u601d\u60f3\u9886\u8896\u4f5c\u4e3a\u9886\u82f1\u7684\"\u5f71\u54cd\u529b\u4eba\u7269\"\u5728\u6b64\u72ec\u5bb6\u5206\u4eab\u77e5\u8bc6\u3001\u7ecf\u9a8c\u548c\u6d1e\u5bdf\u3002\u6765\u81ea 140 \u4e2a\u884c\u4e1a\u7684 400 \u591a\u4e07\u5bb6\u516c\u53f8\u5df2\u5728\u9886\u82f1\u4e0a\u5efa\u7acb\u4e86\u4e3b\u9875\u3002 \u9886\u82f1\u4e3a\u4f01\u4e1a\u548c\u673a\u6784\u63d0\u4f9b\u5305\u62ec\u62db\u8058\u3001\u5e02\u573a\u548c\u9500\u552e\u5728\u5185\u7684\u4e00\u7cfb\u5217\u89e3\u51b3\u65b9\u6848\u3002\u9886\u82f1\u62e5\u6709\u591a\u5143\u5316\u7ecf\u8425\u6a21\u5f0f\uff0c\u4e3b\u8981\u6536\u5165\u6765\u81ea\u4e8e\u4e3a\u5ba2\u6237\u6240\u63d0\u4f9b\u7684\u5f81\u624d\u3001\u8425\u9500\u89e3\u51b3\u65b9\u6848\u53ca\u9ad8\u7ea7\u5e10\u6237\u3002 \u9886\u82f1\u7531\u7f8e\u56fd\u8457\u540d\u6295\u8d44\u5bb6\u548c\u521b\u4e1a\u8005\u91cc\u5fb7\u00b7\u970d\u592b\u66fc\uff08Reid Hoffman\uff09\u5148\u751f\u521b\u529e\uff0c\u516c\u53f8\u603b\u90e8\u4f4d\u4e8e\u7f8e\u56fd\u52a0\u5dde\u7845\u8c37\uff0c\u5728\u5168\u4e16\u754c 30 \u4e2a\u57ce\u5e02\u5f00\u8bbe\u529e\u516c\u5ba4\uff0c\u62e5\u6709 6,000 \u591a\u540d\u5458\u5de5\u3002\u9886\u82f1\u4e8e 2011 \u5e74 5 \u6708\u5728\u7ebd\u7ea6\u8bc1\u5238\u4ea4\u6613\u6240\u4e0a\u5e02\u3002 \u4e3a\u4e86\u66f4\u597d\u5730\u8fde\u63a5\u4e2d\u56fd\u804c\u573a\u4eba\u58eb\uff0c\u4e3a\u5176\u63d0\u4f9b\u5168\u7403\u5316\u5e73\u53f0\uff0c\u52a9\u529b\u4ed6\u4eec\u5b9e\u73b0\u804c\u4e1a\u7406\u60f3\uff0c2014 \u5e74 1 \u6708\uff0c\u9886\u82f1\u5ba3\u5e03\u6b63\u5f0f\u8fdb\u5165\u4e2d\u56fd\uff0c2 \u6708 25 \u65e5\uff0c\u7b80\u4f53\u4e2d\u6587\u6d4b\u8bd5\u7248\u4e0a\u7ebf\uff0c\u5e76\u6b63\u5f0f\u542f\u7528\u4e2d\u6587\u540d\u79f0 - \"\u9886\u82f1\"\u3002 \u9886\u82f1\u5728\u4e2d\u56fd\u4e0e\u7ea2\u6749\u8d44\u672c\u548c\u5bbd\u5e26\u8d44\u672c\u6210\u7acb\u4e86\u5408\u8d44\u516c\u53f8\uff0c\u5171\u540c\u63a2\u7d22\u548c\u5f00\u5c55\u5728\u534e\u4e1a\u52a1\uff0c\u52aa\u529b\u4e3a\u4e2d\u56fd\u7528\u6237\u63d0\u4f9b\u66f4\u597d\u7684\u672c\u5730\u5316\u4ea7\u54c1\u548c\u670d\u52a1\u3002.",
+                    "domain": "linkedin.com",
+                    "id": 16743873,
+                    "name": "LinkedIn",
+                    "similitude": "100"
+                },
+                {
+                    "descriptionShort": "IBM is a global technology and innovation company headquartered in Armonk, NY.",
+                    "domain": "ibm.com",
+                    "id": 16744432,
+                    "name": "IBM",
+                    "similitude": "100"
+                },
+                {
+                    "descriptionShort": "Tesla's mission is to accelerate the world's transition to sustainable energy through increasingly affordable electric vehicles in addition to renewable energy generation and storage.",
+                    "domain": "tesla.com",
+                    "id": 16745566,
+                    "name": "Tesla",
+                    "similitude": "100"
+                },
+                {
+                    "descriptionShort": "Tata Consultancy Services is an IT services, consulting and business solutions organization that delivers real results to global business, ensuring a level of certainty no other firm can match.",
+                    "domain": "tcs.com",
+                    "id": 4424,
+                    "name": "Tata Consultancy Services",
+                    "similitude": "100"
+                },
+                {
+                    "descriptionShort": "We're a diverse collection of thinkers and doers, continually reimagining what's possible to help us all do what we love in new ways.",
+                    "domain": "apple.com",
+                    "id": 16743661,
+                    "name": "Apple",
+                    "similitude": "100"
+                },
+                {
+                    "descriptionShort": "On any given day, two billion people use Unilever products to look good, feel good and get more out of life.",
+                    "domain": "unilever.com",
+                    "id": 29449,
+                    "name": "Unilever",
+                    "similitude": "100"
+                },
+                {
+                    "descriptionShort": "Netflix has been leading the way for digital content since 1997Netflix is the world's leading Internet television network with over 100 million members in over 190 countries enjoying more than 125 million hours of TV shows and movies per day, including original series, documentaries and feature films.",
+                    "domain": "netflix.com",
+                    "id": 16743541,
+                    "name": "Netflix",
+                    "similitude": "100"
+                },
+                {
+                    "descriptionShort": "Meta builds technologies that help people connect, find communities, and grow businesses.",
+                    "domain": "metacareers.com",
+                    "id": 27582482,
+                    "name": "Meta",
+                    "similitude": "100"
+                },
+                {
+                    "descriptionShort": "KiwiTech is a startup investment and technology services company.",
+                    "domain": "kiwitech.com",
+                    "id": 240964,
+                    "name": "KiwiTech",
+                    "similitude": "71.43"
+                },
+                {
+                    "descriptionShort": "Waverley is a multinational software engineering company with the Californian roots and American heart.",
+                    "domain": "waverleysoftware.com",
+                    "id": 16797099,
+                    "name": "Waverley Software",
+                    "similitude": "64.29"
+                },
+                {
+                    "descriptionShort": "We have 3 competencies :-1.",
+                    "domain": "exuberantsolutions.com",
+                    "id": 201247,
+                    "name": "Nexg.Skills",
+                    "similitude": "64.29"
+                },
+                {
+                    "descriptionShort": "Ray Business Technologies Private Limited is a CMMI Level- 3 Certified Global Information Technology (IT) Services and Solutions company.",
+                    "domain": "raybiztech.com",
+                    "id": 1411483,
+                    "name": "Ray Business Technologies",
+                    "similitude": "64.29"
+                },
+                {
+                    "descriptionShort": "For over two decades, Bsquare has helped its customers extract business value from a broad array of corporate assets by making them intelligent, connecting them and using data collected from them to deliver better business outcomes.",
+                    "domain": "bsquare.com",
+                    "id": 572871,
+                    "name": "Bsquare",
+                    "similitude": "57.14"
+                },
+                {
+                    "descriptionShort": "Inglobe Technologies is an IT company that develops Perceptual Computing Systems, Augmented Reality solutions and software, Wireless Sensor Network applications and new generation intelligent systems.",
+                    "domain": "inglobetechnologies.com",
+                    "id": 239855,
+                    "name": "Inglobe Technologies",
+                    "similitude": "57.14"
+                },
+                {
+                    "descriptionShort": "AndPlus is a Software Product Development Agency that designs and develops some of the world's most used applications.",
+                    "domain": "andplus.com",
+                    "id": 1073684,
+                    "name": "AndPlus",
+                    "similitude": "57.14"
+                },
+                {
+                    "descriptionShort": "In O2O we have a team specialized on digital business that offers a consultancy service on Digital strategy and digital transformation, lining up the needs Business and IT have, in areas such as innovation, mobility, e-commerce or process digitalization.",
+                    "domain": "mo2o.com",
+                    "id": 17095483,
+                    "name": "Mobile One2One",
+                    "similitude": "57.14"
+                },
+                {
+                    "descriptionShort": "The Nerdery is a digital consultancy of software engineers, strategists, experience designers and problem solvers who create digital products and services that better people's lives and drive business outcomes.",
+                    "domain": "nerdery.com",
+                    "id": 573118,
+                    "name": "Nerdery",
+                    "similitude": "50.00"
+                },
+                {
+                    "descriptionShort": "ALTEN Calsoft Labs is part of ALTEN Group ($2 Billion Company) , offering next gen digital transformation, enterprise IT and product engineering services.",
+                    "domain": "altencalsoftlabs.com",
+                    "id": 101203,
+                    "name": "ALTEN Calsoft Labs",
+                    "similitude": "50.00"
+                },
+                {
+                    "descriptionShort": "Wiivv is a bionics company that creates custom 3D-printed footwear using body-perfect capture technology, accessible by everyone from a smartphone.",
+                    "domain": "wiivv.com",
+                    "id": 774686,
+                    "name": "Wiivv",
+                    "similitude": "50.00"
+                },
+                {
+                    "descriptionShort": "Clogeny was acquired by MSys Technologies in March 2014.",
+                    "domain": "msystechnologies.com",
+                    "id": 1308133,
+                    "name": "MSys Technologies",
+                    "similitude": "50.00"
+                },
+                {
+                    "descriptionShort": "PENTOZ is a Leading business innovation firm for new business ideas focusing on Web, Mobile and Gaming Apps Development.",
+                    "domain": "pentoz.com",
+                    "id": 251665,
+                    "name": "Pentoz Technology",
+                    "similitude": "50.00"
+                },
+                {
+                    "descriptionShort": "AdMobilize (www.",
+                    "domain": "admobilize.com",
+                    "id": 1895078,
+                    "name": "AdMobilize",
+                    "similitude": "50.00"
+                },
+                {
+                    "descriptionShort": "Based in Toronto, Ontario, Whirlscape is Canadian high-tech startup with roots in human-computer interaction (HCI) and advanced machine learning/computational linguistics.",
+                    "domain": "minuum.com",
+                    "id": 690248,
+                    "name": "Minuum Keyboard",
+                    "similitude": "50.00"
+                }
+            ],
+            "companiesSubsidiaries": [
+                {
+                    "descriptionShort": "Google's mission is to organize the world's information and make it universally accessible and useful.",
+                    "domain": "google.com",
+                    "id": 16743511,
+                    "name": "Google"
+                },
+                {
+                    "descriptionShort": "CapitalG (formerly Google Capital) is a growth equity fund backed by Alphabet, Google's parent company.",
+                    "domain": "capitalg.com",
+                    "id": 611954,
+                    "name": "CapitalG"
+                },
+                {
+                    "descriptionShort": "YouTube is an extremely team-oriented, creative workplace where every single employee has a voice in the choices we make and the features we implement.",
+                    "domain": "youtube.com",
+                    "id": 16743512,
+                    "name": "YouTube"
+                }
+            ],
+            "companyParent": null,
+            "continent": {
+                "code": "na",
+                "latitude": "51.0000002",
+                "longitude": "-109",
+                "nameEn": "North America",
+                "nameEs": "Am\u00e9rica del Norte",
+                "nameFr": "Am\u00e9rique du Nord"
+            },
+            "country": {
+                "code": "us",
+                "latitude": "39.7837304",
+                "longitude": "-100.4458825",
+                "nameEn": "United States",
+                "nameEs": "Estados Unidos",
+                "nameFr": "\u00c9tats-Unis"
+            },
+            "county": {
+                "code": "santa-clara-county|us",
+                "latitude": "37.2333253",
+                "longitude": "-121.6846349",
+                "name": "Santa Clara County"
+            },
+            "description": "A problem isn't truly solved until it's solved for all. Googlers build products that help create opportunities for everyone, whether down the street or across the globe. Bring your insight, imagination and a healthy disregard for the impossible. Bring everything that makes you unique. Together, we can build for everyone. Check out our career opportunities at careers.google.com.",
+            "descriptionShort": "A problem isn't truly solved until it's solved for all.",
+            "domain": "goo.gle",
+            "domainAlts": [],
+            "domainName": "goo",
+            "domainTld": "gle",
+            "emailPatterns": [],
+            "id": 16842770,
+            "industries": [
+                "ads",
+                "android",
+                "apps",
+                "artificial-intelligence",
+                "cloud",
+                "hardware",
+                "internet",
+                "machine-learning",
+                "mobile",
+                "online-video",
+                "search",
+                "software",
+                "virtual-reality",
+                "youtube"
+            ],
+            "industryMain": "internet",
+            "logo": null,
+            "monthlyVisitors": "under-10k",
+            "name": "Google",
+            "phoneNumber": null,
+            "revenue": null,
+            "socialNetworks": {
+                "facebook": "https://www.facebook.com/google",
+                "linkedin": "https://www.linkedin.com/company/google",
+                "twitter": "https://twitter.com/google"
+            },
+            "state": {
+                "code": "california|us",
+                "latitude": "36.7014631",
+                "longitude": "-118.755997",
+                "name": "California"
+            },
+            "stockExchange": "NASDAQ",
+            "stockSymbol": "GOOGL",
+            "technologies": [],
+            "technologyCategories": [],
+            "totalEmployees": "over-10k",
+            "totalEmployeesExact": 273610,
+            "yearFounded": 1998
+        }
+    ],
+    "meta": {
+        "currentPage": 1,
+        "firstPage": 1,
+        "firstPageUrl": null,
+        "lastPage": 826,
+        "lastPageUrl": null,
+        "nextPageUrl": null,
+        "perPage": 1,
+        "previousPageUrl": null,
+        "total": 826
+    }
+}

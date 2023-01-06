@@ -4,17 +4,15 @@ from common.etls_common import DataPipeline, Transformer, Loader
 from transformers.scrappers.language_translation.language_translation_transformer import LanguageTranslationTransformer
 from pipeline.transformers.scrappers.indeed.countries_transformer import IndeedCountriesTransformer
 from utilities.decorators import timer, timer_async
-from deep_translator import GoogleTranslator
 
 from loguru import logger
 
 class LanguageTranslationETL(Transformer, Loader, DataPipeline):
     """Indeed ETL class"""
-    def __init__(self, jobs_df: pd.DataFrame, columns_to_translate: List[str], production_csv_file_path: str):
+    def __init__(self, jobs_df: pd.DataFrame, columns_to_translate: List[str], staging_csv_file_path: str):
         self.jobs_df = jobs_df
         self.columns_to_translate = columns_to_translate
-        self.file_name = "indeed_jobs_translated.csv"
-        self.production_csv_file_path = production_csv_file_path % {"file_name": self.file_name}
+        self.staging_csv_file_path = staging_csv_file_path
 
     async def transform(self) -> pd.DataFrame:
         """Transform data"""
@@ -23,7 +21,7 @@ class LanguageTranslationETL(Transformer, Loader, DataPipeline):
 
     def load(self, countries_df: pd.DataFrame) -> bool:
         """Load data into the CSV"""
-        countries_df.to_csv(self.production_csv_file_path, index=False)
+        countries_df.to_csv(self.staging_csv_file_path, index=False)
         return True
     
     @timer_async

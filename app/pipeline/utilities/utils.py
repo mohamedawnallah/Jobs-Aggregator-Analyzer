@@ -19,7 +19,6 @@ from bs4 import BeautifulSoup
 from typing import Optional
 from pipeline.utilities.helpers import DataFileReaderSingleton
 from loguru import logger
-from dotenv import load_dotenv
 
 class Utils:
     """Utils Class"""
@@ -141,15 +140,16 @@ class Utils:
                     async with session.request(method=http_method, url=url, json=data, params=params) as response:
                         html = await response.text()
                         if response.status != 200:
-                            logger.warning(f"Response Status is: {response.status} for url: {url}")
+                            logger.warning(f"Response Status is: {response.status} for url: {url} and response is: {html[:100]} and retrying")
                             response.close()
                             await session.close()
                             continue
-                        logger.info(f"Response Status is: {response.status} for url: {url}")
+                        logger.info(f"Response Status is: {response.status} for url: {url} and response is: {html[:100]} ...")
                         html = await response.text()
                 return html
             except aiohttp.ClientError as client_error:
                 logger.error(f"Client Error: {client_error}, {url}")
+            
         
     @staticmethod
     def get_beautiful_soup(html: str) -> BeautifulSoup:
@@ -165,11 +165,6 @@ class Utils:
             except yaml.YAMLError as yaml_error:
                 logger.error(f"Error in loading yaml file: {yaml_error}")
         return configs
-
-    @staticmethod
-    def load_env_file(env_file_path: str) -> bool:
-        is_env_file_loaded = load_dotenv(dotenv_path=env_file_path)
-        return is_env_file_loaded
 
     @staticmethod
     def chunker(seq, size) -> Generator[Iterable,None,None]:
