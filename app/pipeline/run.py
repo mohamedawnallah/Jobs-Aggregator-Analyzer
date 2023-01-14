@@ -6,6 +6,7 @@ for further analytics and visualization.
 import asyncio
 import pandas as pd
 from typing import Union, Generator
+
 import os
 from pipeline.utilities.utils import Utils
 #from etl.utilities.utils import Utils
@@ -87,12 +88,13 @@ async def main(params: dict):
     # language_translation_etl = LanguageTranslationETL(jobs_df, columns_to_translate, jobs_translated_staging_path)
     # await language_translation_etl.run()
     
-    companies_api_configs = company_platforms_configs["the_companies_api"]["endpoints"]
-    companies_staging_path = staging_storage_path % {"file_name":"companies.csv"}
-    companies_production_path = production_storage_path % {"file_name":"companies.csv"}
-    company_names_df = pd.read_csv(companies_staging_path)
-    comanies_etl = CompaniesETL(company_names_df, companies_api_configs, companies_api_token, companies_staging_path, companies_production_path)
-    await comanies_etl.run()
+    # companies_api_configs = company_platforms_configs["the_companies_api"]["endpoints"]
+    # companies_staging_path = staging_storage_path % {"file_name":"companies_info.json"}
+    # companies_production_path = production_storage_path % {"file_name":"companies_info.csv"}
+    # companies_path = "app/pipeline/static/data/staging/companies.csv"
+    # company_names_df = pd.read_csv(companies_path)
+    # comanies_etl = CompaniesETL(company_names_df, companies_api_configs, companies_api_token, companies_staging_path, companies_production_path)
+    # await comanies_etl.run()
     
     
 
@@ -106,8 +108,8 @@ if __name__ == "__main__":
     LIGHTCAST_GRANT_TYPE: str = os.getenv("LIGHTCAST_GRANT_TYPE")
     LIGHTCAST_CREDENTIALS = LightCastCredentials(LIGHTCAST_CLIENT_ID,LIGHTCAST_SECRET,LIGHTCAST_GRANT_TYPE,LIGHTCAST_SCOPE)
 
-    COMPANIES_API_TOKEN: str = os.getenv("COMPANIES_API_TOKEN")
-    
+    # COMPANIES_API_TOKEN: str = os.getenv("COMPANIES_API_TOKEN")
+    COMPANIES_API_TOKEN: str = "QgqLYe9a"
     job_title, countries, pages_no = "data+engineer", None, 2
     start_date = "2021-01-01"
     end_date = "2050-12-31"

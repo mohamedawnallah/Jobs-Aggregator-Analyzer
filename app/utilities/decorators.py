@@ -3,7 +3,7 @@ from os import access
 import time
 from typing import Callable, Any
 from loguru import logger
-from utilities.helpers import get_function_string_repr
+from app.utilities.helpers import get_function_string_repr
 Decorator = Callable
 
 def timer_async(func) -> Decorator:

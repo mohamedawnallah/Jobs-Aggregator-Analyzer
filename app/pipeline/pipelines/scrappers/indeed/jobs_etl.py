@@ -9,7 +9,7 @@ from common.etls_common import DataPipeline, Extractor, Transformer, Loader
 from models.country_model import CountryDim
 from models.job_model import JobDim
 from pipeline.transformers.scrappers.indeed.jobs_transformer import IndeedJobsTransformer
-from utilities.decorators import timer_async
+from app.utilities.decorators import timer_async
 
 class IndeedJobsETL(Extractor, Transformer, Loader, DataPipeline):
     """Indeed ETL class"""

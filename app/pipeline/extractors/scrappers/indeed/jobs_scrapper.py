@@ -10,7 +10,6 @@ from pipeline.utilities.utils import Utils
 from common.etls_common import ExtractorAsync
 from pipeline.common.scrappers_common import JobsScrapper, PagesNoScrapper  
 from models.job_model import JobBasicInfo, JobMoreInfo, JobDim
-from pipeline.models.company_models import CompanyBasicInfo, CompanyMoreBasicInfo, CompanyReviews
 from pipeline.transformers.scrappers.indeed.jobs_transformer import IndeedJobBasicInfoTransformer, IndeedJobMoreInfoTransformer
 from models.country_model import CountryDim
 

@@ -2,7 +2,7 @@ import pandas as pd
 from common.etls_common import DataPipeline, Extractor, Transformer, Loader
 from extractors.generators.date_dimensions_generator import DateDimensionsGenerator
 from transformers.generators.date_dimensions_transformer import DateDimensionsTransformer
-from utilities.decorators import timer
+from app.utilities.decorators import timer
 from loguru import logger
 
 class DateDimensionsETL(Extractor, Transformer, Loader, DataPipeline):
