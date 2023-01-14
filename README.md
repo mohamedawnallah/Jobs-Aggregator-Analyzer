@@ -57,11 +57,25 @@ We're looking to better understand **what skills, expected market salary for job
 - Explain the pipelines for processing that you are building
 - Go through your development and add your source code -->
 # ⇔ Data Pipeline Architecture
-![Data Pipeline Architecture](assets/data_pipeline_architecture.png)
+![Data Pipeline Architecture](assets/data-pipeline-architecture.png)
 # 🏢 Data Warehouse Schema Design Process
+The schema design process is a crucial step in the development of a database. It involves creating a blueprint for how data will be organized and stored in the database. This process typically starts with a conceptual data model and progresses through logical and physical data models.
 
-![Conceptual Data Model](assets/conceptual_data_model.png)
+## Conceptual Data Model
+The conceptual data model is the highest level of abstraction in the schema design process. It defines the main entities and relationships within the system, without worrying about specific details such as data types or constraints. The conceptual data model is typically created using a diagramming tool such as Entity-Relationship (ER) diagrams.
 
+![Conceptual Data Model](assets/conceptual-data-model.png)
+
+In this example, the conceptual data model consists of three entities: "Job Dimension," "Job Platform Dimension", "Date Dimension", "Location Dimension", and "Company Dimension" The relationships between the entities are represented by the lines connecting them, with the labels indicating the nature of the cardinality (minimum cardinality, maximum cardinality) (e.g., "1,N" for minimum cardinality 1 and maximum cardinality many).
+
+The attributes of each entity's represented by an oval for the following entities:
+
+![Company Data Model](assets/company-data-model.png)
+
+
+## Logical Data Model
+
+## Physical Data Model
 # Conclusion
 - How did this project turn out
 - What major things have you learned

@@ -5,7 +5,7 @@ from extractors.generators.job_platforms_generator import JobPlatformsGenerator
 from transformers.generators.job_platforms_transformer import JobPlatformsTransformer
 from pipeline.models.country_model import CountryDim
 from models.job_platform_model import JobPlatformDim
-from utilities.decorators import timer
+from app.utilities.decorators import timer
 from loguru import logger
 
 class JobPlatformsETL(Extractor, Transformer, Loader, DataPipeline):

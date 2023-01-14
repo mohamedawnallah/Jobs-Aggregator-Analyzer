@@ -122,6 +122,18 @@ class Utils:
         return soup
 
     @staticmethod
+    def get_value_from_dict(data: dict, key: str) -> str:
+        """Get the value from the given dict"""
+        if not data[key]:
+            data[key] = {}
+            data[key]
+            
+        try:
+            value = data[key]
+        except KeyError:
+            value = {}
+        return value
+    @staticmethod
     async def request_proxy_url(url: str, http_method: Optional[str] = 'GET', params: Optional[dict] = None, data: Optional[dict] = None, content_type: Optional[str] = 'application/text') -> BeautifulSoup:
         """Get the html for the given link"""
         proxy_api_endpoints: str = DataFileReaderSingleton.get_data(file_path="app/etl/settings/api_keys.txt")
@@ -131,24 +143,28 @@ class Utils:
         return response
 
     @staticmethod
-    async def request_url(url: str, http_method: Optional[str] = 'GET', params: Optional[dict] = None, data: Optional[dict] = None, content_type: Optional[str] = 'application/text') -> object:
+    async def request_url(url: str, http_method: Optional[str] = 'GET', params: Optional[dict] = None, data: Optional[dict] = None, content_type: Optional[str] = 'application/text', headers: Optional[dict] = {}) -> object:
         """Get the html for the given link"""
-        headers = {'User-Agent':'Mozilla/5.0','Content-Type':content_type}
+        browser_headers = {'User-Agent':'Mozilla/5.0','Content-Type':content_type}
+        headers.update(browser_headers)
         while True:
             try:
                 async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout(total=1500000),headers=headers) as session:
                     async with session.request(method=http_method, url=url, json=data, params=params) as response:
                         html = await response.text()
+                        if response.status == 404:
+                            http_bad_request_message = f"Response Status is: {response.status} for url: {url} and response is: {html[:100]} and retrying"
+                            raise aiohttp.http_exceptions.HttpBadRequest(http_bad_request_message)
                         if response.status != 200:
                             logger.warning(f"Response Status is: {response.status} for url: {url} and response is: {html[:100]} and retrying")
                             response.close()
                             await session.close()
                             continue
                         logger.info(f"Response Status is: {response.status} for url: {url} and response is: {html[:100]} ...")
-                        html = await response.text()
-                return html
+                        return response      
             except aiohttp.ClientError as client_error:
                 logger.error(f"Client Error: {client_error}, {url}")
+                raise client_error
             
         
     @staticmethod

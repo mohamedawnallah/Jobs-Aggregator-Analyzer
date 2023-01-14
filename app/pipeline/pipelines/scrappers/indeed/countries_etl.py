@@ -5,7 +5,7 @@ from extractors.scrappers.indeed.countries_scrapper import IndeedCountriesScrapp
 from pipeline.models.country_model import CountryDim
 from pipeline.utilities.utils import Utils
 from pipeline.transformers.scrappers.indeed.countries_transformer import IndeedCountriesTransformer
-from utilities.decorators import timer, timer_async
+from app.utilities.decorators import timer, timer_async
 from loguru import logger
 
 class IndeedCountriesETL(Extractor, Transformer, Loader, DataPipeline):
