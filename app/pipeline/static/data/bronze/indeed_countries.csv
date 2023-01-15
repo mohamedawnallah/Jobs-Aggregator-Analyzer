@@ -1,0 +1,63 @@
+,country_id,country_name,country_code,country_url
+1,,   Argentina  ,ar,https://ar.indeed.com?hl=es&co=ar
+2,,   Australia  ,au,https://au.indeed.com?hl=en&co=au
+3,,   Austria  ,at,https://at.indeed.com?hl=de&co=at
+4,,   Bahrain  ,bh,https://bh.indeed.com?hl=en&co=bh
+5,,   Belgium  ,be,https://be.indeed.com?hl=fr&co=be
+6,,   Brazil  ,br,https://br.indeed.com?hl=pt&co=br
+7,,   Canada  ,ca,https://ca.indeed.com?hl=en&co=ca
+8,,   Chile  ,cl,https://cl.indeed.com?hl=es&co=cl
+9,,   China  ,cn,https://cn.indeed.com?hl=zh&co=cn
+10,,   Colombia  ,co,https://co.indeed.com?hl=es&co=co
+11,,   Costa Rica  ,cr,https://cr.indeed.com?hl=es&co=cr
+12,,   Czech Republic  ,cz,https://cz.indeed.com?hl=cs&co=cz
+13,,   Denmark  ,dk,https://dk.indeed.com?hl=da&co=dk
+14,,   Ecuador  ,ec,https://ec.indeed.com?hl=es&co=ec
+15,,   Egypt  ,eg,https://eg.indeed.com?hl=en&co=eg
+16,,   Finland  ,fi,https://fi.indeed.com?hl=fi&co=fi
+17,,   France  ,fr,https://fr.indeed.com?hl=fr&co=fr
+18,,   Germany  ,de,https://de.indeed.com?hl=de&co=de
+19,,   Greece  ,gr,https://gr.indeed.com?hl=el&co=gr
+20,,   Hong Kong  ,hk,https://hk.indeed.com?hl=en&co=hk
+21,,   Hungary  ,hu,https://hu.indeed.com?hl=hu&co=hu
+22,,   India  ,in,https://in.indeed.com?hl=en&co=in
+23,,   Indonesia  ,id,https://id.indeed.com?hl=id&co=id
+24,,   Ireland  ,ie,https://ie.indeed.com?hl=en&co=ie
+25,,   Israel  ,il,https://il.indeed.com?hl=iw&co=il
+26,,   Italy  ,it,https://it.indeed.com?hl=it&co=it
+27,,   Japan  ,jp,https://jp.indeed.com?hl=ja&co=jp
+28,,   Kuwait  ,kw,https://kw.indeed.com?hl=ar&co=kw
+29,,   Luxembourg  ,lu,https://lu.indeed.com?hl=de&co=lu
+30,,   Malaysia  ,malaysia,https://malaysia.indeed.com?hl=en&co=malaysia
+31,,   Mexico  ,mx,https://mx.indeed.com?hl=es&co=mx
+32,,   Morocco  ,ma,https://ma.indeed.com?hl=es&co=ma
+33,,   Netherlands  ,nl,https://nl.indeed.com?hl=nl&co=nl
+34,,   New Zealand  ,nz,https://nz.indeed.com?hl=en&co=nz
+35,,   Nigeria  ,ng,https://ng.indeed.com?hl=en&co=ng
+36,,   Norway  ,no,https://no.indeed.com?hl=no&co=no
+37,,   Oman  ,om,https://om.indeed.com?hl=ar&co=om
+38,,   Pakistan  ,pk,https://pk.indeed.com?hl=en&co=pk
+39,,   Panama  ,pa,https://pa.indeed.com?hl=es&co=pa
+40,,   Peru  ,pe,https://pe.indeed.com?hl=es&co=pe
+41,,   Philippines  ,ph,https://ph.indeed.com?hl=en&co=ph
+42,,   Poland  ,pl,https://pl.indeed.com?hl=pl&co=pl
+43,,   Portugal  ,pt,https://pt.indeed.com?hl=pt&co=pt
+44,,   Qatar  ,qa,https://qa.indeed.com?hl=ar&co=qa
+45,,   Romania  ,ro,https://ro.indeed.com?hl=ro&co=ro
+46,,   Saudi Arabia  ,sa,https://sa.indeed.com?hl=ar&co=sa
+47,,   Singapore  ,sg,https://sg.indeed.com?hl=en&co=sg
+48,,   South Africa  ,za,https://za.indeed.com?hl=en&co=za
+49,,   South Korea  ,kr,https://kr.indeed.com?hl=ko&co=kr
+50,,   Spain  ,es,https://es.indeed.com?hl=es&co=es
+51,,   Sweden  ,se,https://se.indeed.com?hl=sv&co=se
+52,,   Switzerland  ,ch,https://ch.indeed.com?hl=de&co=ch
+53,,   Taiwan  ,tw,https://tw.indeed.com?hl=zh&co=tw
+54,,   Thailand  ,th,https://th.indeed.com?hl=en&co=th
+55,,   Turkey  ,tr,https://tr.indeed.com?hl=tr&co=tr
+56,,   Ukraine  ,ua,https://ua.indeed.com?hl=ru&co=ua
+57,,   United Arab Emirates  ,ae,https://ae.indeed.com?hl=ar&co=ae
+58,,   United Kingdom  ,uk,https://uk.indeed.com?hl=en&co=gb
+59,,   United States  ,www,https://www.indeed.com?hl=en&co=us
+60,,   Uruguay  ,uy,https://uy.indeed.com?hl=es&co=uy
+61,,   Venezuela  ,ve,https://ve.indeed.com?hl=es&co=ve
+62,,   Vietnam  ,vn,https://vn.indeed.com?hl=en&co=vn

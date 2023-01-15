@@ -51,8 +51,8 @@ data_sources:
 
 storage:
   raw:
-    csv: "app/pipeline/static/data/raw/%(file_name)s"
+    csv: "app/pipeline/static/data/bronze/%(file_name)s"
   staging:
-    csv: "app/pipeline/static/data/staging/%(file_name)s"
+    csv: "app/pipeline/static/data/silver/%(file_name)s"
   production:
-    csv: "app/pipeline/static/data/production/%(file_name)s"
+    csv: "app/pipeline/static/data/gold/%(file_name)s"

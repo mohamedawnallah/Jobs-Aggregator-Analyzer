@@ -1,0 +1,63 @@
+country_id,country_name,country_code,country_url
+1,argentina,ar,https://ar.indeed.com?hl=es&co=ar
+2,australia,au,https://au.indeed.com?hl=en&co=au
+3,austria,at,https://at.indeed.com?hl=de&co=at
+4,bahrain,bh,https://bh.indeed.com?hl=en&co=bh
+5,belgium,be,https://be.indeed.com?hl=fr&co=be
+6,brazil,br,https://br.indeed.com?hl=pt&co=br
+7,canada,ca,https://ca.indeed.com?hl=en&co=ca
+8,chile,cl,https://cl.indeed.com?hl=es&co=cl
+9,china,cn,https://cn.indeed.com?hl=zh&co=cn
+10,colombia,co,https://co.indeed.com?hl=es&co=co
+11,costa rica,cr,https://cr.indeed.com?hl=es&co=cr
+12,czech republic,cz,https://cz.indeed.com?hl=cs&co=cz
+13,denmark,dk,https://dk.indeed.com?hl=da&co=dk
+14,ecuador,ec,https://ec.indeed.com?hl=es&co=ec
+15,egypt,eg,https://eg.indeed.com?hl=en&co=eg
+16,finland,fi,https://fi.indeed.com?hl=fi&co=fi
+17,france,fr,https://fr.indeed.com?hl=fr&co=fr
+18,germany,de,https://de.indeed.com?hl=de&co=de
+19,greece,gr,https://gr.indeed.com?hl=el&co=gr
+20,hong kong,hk,https://hk.indeed.com?hl=en&co=hk
+21,hungary,hu,https://hu.indeed.com?hl=hu&co=hu
+22,india,in,https://in.indeed.com?hl=en&co=in
+23,indonesia,id,https://id.indeed.com?hl=id&co=id
+24,ireland,ie,https://ie.indeed.com?hl=en&co=ie
+25,israel,il,https://il.indeed.com?hl=iw&co=il
+26,italy,it,https://it.indeed.com?hl=it&co=it
+27,japan,jp,https://jp.indeed.com?hl=ja&co=jp
+28,kuwait,kw,https://kw.indeed.com?hl=ar&co=kw
+29,luxembourg,lu,https://lu.indeed.com?hl=de&co=lu
+30,malaysia,malaysia,https://malaysia.indeed.com?hl=en&co=malaysia
+31,mexico,mx,https://mx.indeed.com?hl=es&co=mx
+32,morocco,ma,https://ma.indeed.com?hl=es&co=ma
+33,netherlands,nl,https://nl.indeed.com?hl=nl&co=nl
+34,new zealand,nz,https://nz.indeed.com?hl=en&co=nz
+35,nigeria,ng,https://ng.indeed.com?hl=en&co=ng
+36,norway,no,https://no.indeed.com?hl=no&co=no
+37,oman,om,https://om.indeed.com?hl=ar&co=om
+38,pakistan,pk,https://pk.indeed.com?hl=en&co=pk
+39,panama,pa,https://pa.indeed.com?hl=es&co=pa
+40,peru,pe,https://pe.indeed.com?hl=es&co=pe
+41,philippines,ph,https://ph.indeed.com?hl=en&co=ph
+42,poland,pl,https://pl.indeed.com?hl=pl&co=pl
+43,portugal,pt,https://pt.indeed.com?hl=pt&co=pt
+44,qatar,qa,https://qa.indeed.com?hl=ar&co=qa
+45,romania,ro,https://ro.indeed.com?hl=ro&co=ro
+46,saudi arabia,sa,https://sa.indeed.com?hl=ar&co=sa
+47,singapore,sg,https://sg.indeed.com?hl=en&co=sg
+48,south africa,za,https://za.indeed.com?hl=en&co=za
+49,south korea,kr,https://kr.indeed.com?hl=ko&co=kr
+50,spain,es,https://es.indeed.com?hl=es&co=es
+51,sweden,se,https://se.indeed.com?hl=sv&co=se
+52,switzerland,ch,https://ch.indeed.com?hl=de&co=ch
+53,taiwan,tw,https://tw.indeed.com?hl=zh&co=tw
+54,thailand,th,https://th.indeed.com?hl=en&co=th
+55,turkey,tr,https://tr.indeed.com?hl=tr&co=tr
+56,ukraine,ua,https://ua.indeed.com?hl=ru&co=ua
+57,united arab emirates,ae,https://ae.indeed.com?hl=ar&co=ae
+58,united kingdom,uk,https://uk.indeed.com?hl=en&co=gb
+59,united states,www,https://www.indeed.com?hl=en&co=us
+60,uruguay,uy,https://uy.indeed.com?hl=es&co=uy
+61,venezuela,ve,https://ve.indeed.com?hl=es&co=ve
+62,vietnam,vn,https://vn.indeed.com?hl=en&co=vn

@@ -4,7 +4,7 @@ from typing import List
 import json
 from common.etls_common import DataPipeline, Extractor, Transformer, Loader
 from extractors.apis.companies.companies_info_api_extractor import CompaniesInfoAPIExtractor
-from transformers.apis.companies_info_api_transformer import CompaniesInfoAPITransformer
+from transformers.apis.companies.companies_info_api_transformer import CompaniesInfoAPITransformer
 from app.utilities.decorators import timer, timer_async
 # from pipeline.transformers.apis.companies_info_api_transformer import CompaniesInfoAPITransformer
 from loguru import logger
