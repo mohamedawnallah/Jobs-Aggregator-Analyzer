@@ -70,7 +70,14 @@ In this example, the conceptual data model consists of three entities: "Job Dime
 
 The attributes of each entity's represented by an oval for the following entities:
 
+### Company Data Model
+
 ![Company Data Model](assets/company-data-model.png)
+
+
+### Location Data Model
+
+![Location Data Model](assets/location-data-model.png)
 
 
 ## Logical Data Model

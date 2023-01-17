@@ -97,11 +97,11 @@ async def main(params: dict):
     # comanies_etl = CompaniesETL(company_names_df, companies_api_configs, companies_api_token, companies_staging_path, companies_production_path)
     # await comanies_etl.run()
     
-    gold_storage_path = production_storage_path % {"file_name":"fortune_companies_info_merged.csv"}
-    companies_info_df: pd.DataFrame = pd.read_csv("/Users/mohamed/Desktop/data-projects/Jobs-Aggregator-Analyzer/app/pipeline/static/data/gold/companies_info.csv")
-    fortune_companies_df: pd.DataFrame = pd.read_csv("/Users/mohamed/Desktop/data-projects/Jobs-Aggregator-Analyzer/app/pipeline/static/data/gold/fortune_companies.csv")
-    fortune_companies_etl = FortuneCompaniesInfoETL(companies_info_df, fortune_companies_df, gold_storage_path)
-    fortune_companies_etl.run()
+    # gold_storage_path = production_storage_path % {"file_name":"fortune_companies_info_merged.csv"}
+    # companies_info_df: pd.DataFrame = pd.read_csv("/Users/mohamed/Desktop/data-projects/Jobs-Aggregator-Analyzer/app/pipeline/static/data/gold/companies_info.csv")
+    # fortune_companies_df: pd.DataFrame = pd.read_csv("/Users/mohamed/Desktop/data-projects/Jobs-Aggregator-Analyzer/app/pipeline/static/data/gold/fortune_companies.csv")
+    # fortune_companies_etl = FortuneCompaniesInfoETL(companies_info_df, fortune_companies_df, gold_storage_path)
+    # fortune_companies_etl.run()
     
     
     
