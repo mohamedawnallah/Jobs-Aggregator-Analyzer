@@ -16,6 +16,7 @@ class DateDimensionsGenerator(Extractor):
     def get_date_dimensions(self, start_date: str, end_date: str) -> pd.DataFrame:
         """Get the list of countries supported by indeed"""
         dates_dim_df = pd.DataFrame({"date": pd.date_range(start=start_date, end=end_date)})
+        dates_dim_df["date_id"] = dates_dim_df["date"].dt.strftime("%Y%m%d").astype(int)
         dates_dim_df["day"] = dates_dim_df["date"].dt.day_of_week
         dates_dim_df["day_name"] = dates_dim_df["date"].dt.day_name()
         dates_dim_df["week"] = dates_dim_df["date"].dt.isocalendar().week
@@ -24,4 +25,5 @@ class DateDimensionsGenerator(Extractor):
         dates_dim_df["quarter"] = dates_dim_df["date"].dt.quarter
         dates_dim_df["year"] = dates_dim_df["date"].dt.year
         dates_dim_df["year_half"] = dates_dim_df["date"].dt.month.apply(lambda x: 1 if x <= 6 else 2)
+        
         return dates_dim_df

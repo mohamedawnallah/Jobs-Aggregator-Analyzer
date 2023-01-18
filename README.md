@@ -81,6 +81,10 @@ The attributes of each entity's represented by an oval for the following entitie
 
 ![Location Data Model](assets/location-data-model.png)
 
+### Date Data Model
+
+![Date Data Model](assets/date-data-model.png)
+
 
 ## Logical Data Model
 
