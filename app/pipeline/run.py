@@ -74,13 +74,13 @@ async def main(params: dict):
     # job_platforms_etl = JobPlatformsETL(job_platforms_configs, raw_storage_path, raw_storage_path)
     # job_platforms_etl.run()
     
-    # date_dimensions_etl = DateDimensionsETL(start_date, end_date, raw_storage_path, raw_storage_path)
-    # date_dimensions_etl.run()
+    date_dimensions_etl = DateDimensionsETL(start_date, end_date, raw_storage_path, raw_storage_path)
+    date_dimensions_etl.run()
     
-    countries_raw_path = raw_storage_path % {"file_name":"indeed_countries.csv"}
-    countries = IndeedCountriesScrapper.get_countries_from_local(countries_raw_path)
-    jobs_etl = IndeedJobsETL(indeed_configs, job_title, countries, pages_no, raw_storage_path, raw_storage_path)
-    await jobs_etl.run()
+    # countries_raw_path = raw_storage_path % {"file_name":"indeed_countries.csv"}
+    # countries = IndeedCountriesScrapper.get_countries_from_local(countries_raw_path)
+    # jobs_etl = IndeedJobsETL(indeed_configs, job_title, countries, pages_no, raw_storage_path, raw_storage_path)
+    # await jobs_etl.run()
     
     # jobs_staging_path= staging_storage_path % {"file_name":"jobs.csv"}
     # jobs_translated_staging_path = staging_storage_path % {"file_name":"jobs_translated.csv"}

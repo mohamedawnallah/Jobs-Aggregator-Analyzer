@@ -17,7 +17,7 @@ class DateDimensionsETL(Extractor, Transformer, Loader, DataPipeline):
         """Extract data from the Indeed Website"""
         date_dimensions_generator = DateDimensionsGenerator()
         date_dimensions_df: pd.DataFrame = date_dimensions_generator.extract(self.start_date, self.end_date)
-        date_dimensions_df.to_csv(self.staging_csv_file_path)
+        date_dimensions_df.to_csv(self.staging_csv_file_path, index=False)
         return date_dimensions_df
 
     def transform(self, date_dimensions_df: pd.DataFrame) -> pd.DataFrame:
@@ -27,7 +27,7 @@ class DateDimensionsETL(Extractor, Transformer, Loader, DataPipeline):
 
     def load(self, date_dimensions_df: pd.DataFrame) -> bool:
         """Load data into the CSV"""
-        date_dimensions_df.to_csv(self.production_csv_file_path)
+        date_dimensions_df.to_csv(self.production_csv_file_path, index=False)
         return True
     
     @timer
