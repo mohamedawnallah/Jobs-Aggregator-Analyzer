@@ -116,7 +116,7 @@ class IndeedJobsScrapper(ExtractorAsync, PagesNoScrapper,JobsScrapper):
     async def get_job_dim(self, job_basic_info: JobBasicInfo, country_id: int) -> JobDim:
         """Get the job dimension"""
         job_more_info: JobMoreInfo = await self.get_job_more_info(job_basic_info)
-        job_dim: JobDim = JobDim(job_basic_info=job_basic_info, job_more_info=job_more_info, country_id=country_id)
+        job_dim: JobDim = JobDim(job_basic_info=job_basic_info, job_more_info=job_more_info)
         yield job_dim
     
     async def get_job_more_info(self, job_basic_info: JobBasicInfo) -> JobMoreInfo:

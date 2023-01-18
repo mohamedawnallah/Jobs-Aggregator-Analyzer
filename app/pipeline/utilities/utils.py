@@ -117,7 +117,8 @@ class Utils:
     @staticmethod
     async def get_page_parsed(url: str) -> BeautifulSoup:
         """Get the parsed page of the given html"""
-        html: str = await Utils.request_proxy_url(url)
+        response: aiohttp.ClientResponse = await Utils.request_proxy_url(url)
+        html: str = await response.text()
         soup: BeautifulSoup = Utils.get_beautiful_soup(html)
         return soup
 
@@ -134,9 +135,9 @@ class Utils:
             value = {}
         return value
     @staticmethod
-    async def request_proxy_url(url: str, http_method: Optional[str] = 'GET', params: Optional[dict] = None, data: Optional[dict] = None, content_type: Optional[str] = 'application/text') -> BeautifulSoup:
+    async def request_proxy_url(url: str, http_method: Optional[str] = 'GET', params: Optional[dict] = None, data: Optional[dict] = None, content_type: Optional[str] = 'application/text', scrapping_proxy_apis_keys_path: str = "app/pipeline/settings/scrapping_proxy_api_keys.txt") -> BeautifulSoup:
         """Get the html for the given link"""
-        proxy_api_endpoints: str = DataFileReaderSingleton.get_data(file_path="app/etl/settings/api_keys.txt")
+        proxy_api_endpoints: str = DataFileReaderSingleton.get_data(file_path=scrapping_proxy_apis_keys_path)
         proxy_api_endpoint: str = random.choice(proxy_api_endpoints)
         proxy_api_url = proxy_api_endpoint % {'url':url}
         response: str = await Utils.request_url(url=proxy_api_url, http_method=http_method, params=params, data=data, content_type=content_type)
@@ -149,23 +150,27 @@ class Utils:
         headers.update(browser_headers)
         while True:
             try:
-                async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout(total=1500000),headers=headers) as session:
+                async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout(total=10000), headers=headers, trust_env=True) as session:
                     async with session.request(method=http_method, url=url, json=data, params=params) as response:
                         html = await response.text()
-                        if response.status == 404:
-                            http_bad_request_message = f"Response Status is: {response.status} for url: {url} and response is: {html[:100]} and retrying"
-                            raise aiohttp.http_exceptions.HttpBadRequest(http_bad_request_message)
-                        if response.status != 200:
-                            logger.warning(f"Response Status is: {response.status} for url: {url} and response is: {html[:100]} and retrying")
+                        message = f"Response Status is: {response.status} for url: {url} and response is: {html[:100]}"
+                        if response.status >= 500:
+                            logger.warning(message)
                             response.close()
                             await session.close()
+                            await asyncio.sleep(1)
                             continue
-                        logger.info(f"Response Status is: {response.status} for url: {url} and response is: {html[:100]} ...")
+                        elif response.status >= 400:
+                            logger.warning(message)
+                            await asyncio.sleep(1)
+                            continue
+                        else:
+                            logger.info(message)
                         return response      
             except aiohttp.ClientError as client_error:
                 logger.error(f"Client Error: {client_error}, {url}")
-                raise client_error
-            
+                await asyncio.sleep(1)
+                continue
         
     @staticmethod
     def get_beautiful_soup(html: str) -> BeautifulSoup:
