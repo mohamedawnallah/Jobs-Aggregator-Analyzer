@@ -26,16 +26,11 @@ class JobDim:
     """Job Full Info Data class"""
     job_basic_info: JobBasicInfo
     job_more_info: JobMoreInfo
-    country_id: int
-    job_id: Optional[int] = field(default=None)
-
+    
     def to_dict(self):
         """Convert to dict"""
         job_dim: dict=  {
-            'job_id': self.job_id,
-            'country_id': self.country_id,
             **vars(self.job_basic_info),
             **vars(self.job_more_info),
         }
         return job_dim
-

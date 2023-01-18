@@ -293,3 +293,4 @@ spark-warehouse/
 jenkins g
 data_modelling_mistakes.txt
 app/frontend/frontend_backend_ideas.txt
+app/pipeline/settings/scrapping_proxy_api_keys.txt
