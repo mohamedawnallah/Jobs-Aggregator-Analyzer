@@ -20,6 +20,7 @@ from extractors.scrappers.indeed.countries_scrapper import IndeedCountriesScrapp
 from pipelines.scrappers.indeed.jobs_etl import IndeedJobsETL
 from pipelines.generators.job_platforms_etl import JobPlatformsETL
 from pipelines.generators.date_dimensions_etl import DateDimensionsETL
+from pipelines.generators.factless_fact_table import FactlessFactTableETL
 # from pipelines.scrappers.language_translation.language_translation_etl import LanguageTranslationETL
 # from pipelines.apis.fortune_companies.fortune_companies_etl import FortuneCompaniesETL
 from pipelines.connections.fortune_companies_info_etl import FortuneCompaniesInfoETL
@@ -74,8 +75,8 @@ async def main(params: dict):
     # job_platforms_etl = JobPlatformsETL(job_platforms_configs, raw_storage_path, raw_storage_path)
     # job_platforms_etl.run()
     
-    date_dimensions_etl = DateDimensionsETL(start_date, end_date, raw_storage_path, raw_storage_path)
-    date_dimensions_etl.run()
+    # date_dimensions_etl = DateDimensionsETL(start_date, end_date, raw_storage_path, raw_storage_path)
+    # date_dimensions_etl.run()
     
     # countries_raw_path = raw_storage_path % {"file_name":"indeed_countries.csv"}
     # countries = IndeedCountriesScrapper.get_countries_from_local(countries_raw_path)
@@ -103,6 +104,15 @@ async def main(params: dict):
     # fortune_companies_etl = FortuneCompaniesInfoETL(companies_info_df, fortune_companies_df, gold_storage_path)
     # fortune_companies_etl.run()
     
+    # bronze_storage_path = staging_storage_path % {"file_name":"factless_fact_table.csv"}
+    # gold_storage_path = production_storage_path % {"file_name":"factless_fact_table.csv"}
+    # jobs_dim_df = pd.read_csv("data/gold/jobs.csv")
+    # dates_dim_df = pd.read_csv("data/gold/dates.csv")
+    # locations_dim_df = pd.read_csv("data/gold/locations.csv")
+    # companies_dim_df = pd.read_csv("data/gold/companies.csv")
+    # factless_fact_table_etl = FactlessFactTableETL(jobs_dim_df, dates_dim_df, locations_dim_df, companies_dim_df, bronze_storage_path, gold_storage_path)
+    # factless_fact_table_etl.run()
+    
     
     
 
@@ -118,7 +128,7 @@ if __name__ == "__main__":
 
     # COMPANIES_API_TOKEN: str = os.getenv("COMPANIES_API_TOKEN")
     COMPANIES_API_TOKEN: str = "QgqLYe9a"
-    job_title, countries, pages_no = "data+engineer", None, 2
+    job_title, countries, pages_no = "data+engineer", None, 1
     start_date = "2021-01-01"
     end_date = "2050-12-31"
     job_params = {"pipeline_configs":pipeline_configs,"countries":countries,

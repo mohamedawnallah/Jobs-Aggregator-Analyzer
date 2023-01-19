@@ -37,7 +37,7 @@ class IndeedJobsScrapper(ExtractorAsync, PagesNoScrapper,JobsScrapper):
     async def get_jobs_in_country(self, country: CountryDim, job_title: str, pages_no: Optional[int] = None) -> AsyncGenerator[JobDim,None]:
         """Indeed Full Info Job Items"""
         country_jobs_url = self.jobs_base_url % {"country_code":country.country_code,"job_title":job_title}
-        job_dim_generator: AsyncGenerator[JobDim,None] = self.get_job_dim_generator(country_jobs_url, country.country_id, pages_no)
+        job_dim_generator: AsyncGenerator[JobDim,None] = self.get_job_dim_generator(country_jobs_url, country.country_name, pages_no)
         async for job_dim in job_dim_generator:
             yield job_dim   
 
@@ -65,13 +65,13 @@ class IndeedJobsScrapper(ExtractorAsync, PagesNoScrapper,JobsScrapper):
             indx += 1
         return jobs_df
     
-    async def get_job_dim_generator(self, country_jobs_url: str, country_id: int, pages_no: str) -> AsyncGenerator[JobDim,None]:
+    async def get_job_dim_generator(self, country_jobs_url: str, country_name: str, pages_no: str) -> AsyncGenerator[JobDim,None]:
         """Get the more job info when user clicks on the job card"""
         # run the job cards in parallel
         async for jobs_per_page in self.get_jobs_for_each_page_generator(country_jobs_url,pages_no):
             # run the job cards in parallel
-            jobs_basic_infos: List[JobBasicInfo] = [self.get_job_basic_info(job) for job in jobs_per_page]
-            job_dim_generators: List[AsyncGenerator[JobDim, None]] = [self.get_job_dim(job_basic_info, country_id) for job_basic_info in jobs_basic_infos]
+            jobs_basic_infos: List[JobBasicInfo] = [self.get_job_basic_info(job, country_name) for job in jobs_per_page]
+            job_dim_generators: List[AsyncGenerator[JobDim, None]] = [self.get_job_dim(job_basic_info) for job_basic_info in jobs_basic_infos]
             job_dim_generator = Utils.get_stream_data_from_data_async_generators(job_dim_generators)
             async for job_dim in job_dim_generator:
                 yield job_dim
@@ -98,7 +98,7 @@ class IndeedJobsScrapper(ExtractorAsync, PagesNoScrapper,JobsScrapper):
         jobs: Optional[bs4.element.ResultSet] = Utils.find_bs4_elements(jobs_soup, "div", {"class":"cardOutline"})
         return jobs
 
-    def get_job_basic_info(self, job: bs4.element.Tag) -> List[JobBasicInfo]:
+    def get_job_basic_info(self, job: bs4.element.Tag, country_name: str) -> List[JobBasicInfo]:
         """Get jobs per page (usually 15 jobs per page in indeed)"""
         job_title: Optional[bs4.element.Tag] = Utils.find_bs4_element(job, "h2", {"class":"jobTitle"})
         job_link: Optional[bs4.element.Tag] =  Utils.find_bs4_element(job_title, "a")
@@ -109,7 +109,7 @@ class IndeedJobsScrapper(ExtractorAsync, PagesNoScrapper,JobsScrapper):
         company_name: Optional[bs4.element.Tag] = Utils.find_bs4_element(job, "span",{"class": "companyName"})
         company_job_platform_url= Utils.get_attribute_value_from_tag(company_name, "a", "href")
         company_job_platform_url = company_job_platform_url if company_job_platform_url else company_name
-        job_basic_info: JobBasicInfo = JobBasicInfo(job_title=job_title,job_platform_id=job_platform_id,job_url=self.job_base_url, job_posted_date=job_posted_date, company_name=company_name, company_job_platform_url=company_job_platform_url, job_city=job_city, is_job_remote=False)
+        job_basic_info: JobBasicInfo = JobBasicInfo(job_title=job_title,job_platform_id=job_platform_id,job_url=self.job_base_url, job_posted_date=job_posted_date, company_name=company_name, company_job_platform_url=company_job_platform_url, job_city=job_city, is_job_remote=False, job_country=country_name)
         job_basic_info: JobBasicInfo = IndeedJobBasicInfoTransformer.transform(job_basic_info, self.company_base_url)
         return job_basic_info
 
