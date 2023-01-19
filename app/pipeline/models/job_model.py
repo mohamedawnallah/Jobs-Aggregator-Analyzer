@@ -11,9 +11,11 @@ class JobBasicInfo:
     job_url: str
     job_posted_date: str
     job_city: str
+    job_country: str
     is_job_remote: bool
     company_name: str
     company_job_platform_url: str
+    
     
 @dataclass(frozen=True)
 class JobMoreInfo:

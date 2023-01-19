@@ -88,6 +88,10 @@ The attributes of each entity's represented by an oval for the following entitie
 
 ## Logical Data Model
 
+Jobs Factless Fact Table Data Model
+
+![Jobs Factless Fact Table Data Model](assets/jobs-factless-fact-table-data-model.png)
+
 ## Physical Data Model
 # Conclusion
 - How did this project turn out

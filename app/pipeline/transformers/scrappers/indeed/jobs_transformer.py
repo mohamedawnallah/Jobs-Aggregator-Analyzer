@@ -26,7 +26,7 @@ class IndeedJobBasicInfoTransformer(DataFrameTransformer, Transformer):
         job_city = IndeedJobBasicInfoTransformer.get_job_city_normalized(job_city=job_city)
         is_job_remote = IndeedJobBasicInfoTransformer.is_job_remote(job_city=job_city, job_title=job_title)
         
-        job_basic_info = JobBasicInfo(job_title=job_title,job_platform_id=job_platform_id,job_posted_date=job_posted_date_formated,job_url=job_url, company_name=company_name, company_job_platform_url=company_job_platform_url, job_city=job_city, is_job_remote=is_job_remote)
+        job_basic_info = JobBasicInfo(job_title=job_title,job_platform_id=job_platform_id,job_posted_date=job_posted_date_formated,job_url=job_url, company_name=company_name, company_job_platform_url=company_job_platform_url, job_city=job_city, is_job_remote=is_job_remote, job_country=job_basic_info.job_country)
         return job_basic_info
 
     @staticmethod
