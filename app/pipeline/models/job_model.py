@@ -6,22 +6,21 @@ from loguru import logger
 @dataclass(frozen=True)
 class JobBasicInfo:
     """Job Basic Info Data Class"""
-    job_platform_id: str
-    job_title: str
-    job_url: str
-    job_posted_date: str
-    job_city: str
-    job_country: str
-    is_job_remote: bool
+    platform_id: str
+    title: str
+    url: str
+    posted_date: str
+    city: str
+    country: str
     company_name: str
     company_job_platform_url: str
-    
-    
+    is_remote: bool
+
 @dataclass(frozen=True)
 class JobMoreInfo:
     """Job More Info Data Class"""
-    job_description: str
-    job_benefits: str
+    description: str
+    benefits: str
     
 @dataclass(frozen=True)
 class JobDim:

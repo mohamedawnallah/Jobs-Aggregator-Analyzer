@@ -4,15 +4,29 @@ from typing import List, Callable, Optional
 class DataFrameUtils:
     
     @staticmethod
+    def reset_index_df(df: pd.DataFrame, new_index_column_name: str) -> pd.DataFrame:
+        """Reset the index of the dataframe"""
+        df = DataFrameUtils.reset_index(df)
+        df_renamed: pd.DataFrame = DataFrameUtils.rename_column(df=df, column_name="index", new_column_name=new_index_column_name)
+        df_index_shifted: pd.DataFrame = DataFrameUtils.shift_numeric_column(df=df_renamed, column_name=new_index_column_name, step=1)
+        return df_index_shifted
+    
+    @staticmethod
+    def reset_index(df: pd.DataFrame) -> pd.DataFrame:
+        """Reset the index of the dataframe"""
+        df = df.reset_index(drop=True, inplace=False)
+        return df
+     
+    @staticmethod
     def drop_id_column(df: pd.DataFrame, id_column: str) -> pd.DataFrame:
         """Drop the id column from the dataframe"""
         df = df.drop(id_column, axis=1, inplace=False)
         return df
     
     @staticmethod
-    def set_index_column_name(df: pd.DataFrame, index_column_name: str) -> pd.DataFrame:
+    def rename_column(df: pd.DataFrame, column_name: str, new_column_name) -> pd.DataFrame:
         """Set the index column name"""
-        df.index.name = index_column_name
+        df = df.rename(columns={column_name: new_column_name})
         return df
 
     @staticmethod
@@ -34,8 +48,8 @@ class DataFrameUtils:
         return df
     
     @staticmethod
-    def shift_index_df(df: pd.DataFrame, step: Optional[int] = 1) -> pd.DataFrame:
+    def shift_numeric_column(df: pd.DataFrame, column_name: str, step: Optional[int] = 1) -> pd.DataFrame:
         """Shift the index of the dataframe"""
-        df.index = df.index + step
+        df[column_name] += step
         return df
   

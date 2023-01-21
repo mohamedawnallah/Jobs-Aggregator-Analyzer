@@ -12,21 +12,21 @@ class IndeedJobBasicInfoTransformer(DataFrameTransformer, Transformer):
     @staticmethod
     def transform(job_basic_info: JobBasicInfo, company_base_url: str) -> JobBasicInfo:
         """Transform the basic job company info to a namedtuple"""
-        job_title = Utils.get_text(job_basic_info.job_title)
-        job_platform_id = Utils.get_text(job_basic_info.job_platform_id)
+        job_title = Utils.get_text(job_basic_info.title)
+        job_platform_id = Utils.get_text(job_basic_info.platform_id)
         company_name = Utils.get_text(job_basic_info.company_name)
         company_job_platform_url = Utils.get_text(job_basic_info.company_job_platform_url)
-        job_posted_date = Utils.get_text(job_basic_info.job_posted_date)
-        job_city = Utils.get_text(job_basic_info.job_city)
+        job_posted_date = Utils.get_text(job_basic_info.posted_date)
+        job_city = Utils.get_text(job_basic_info.city)
         
         job_platform_id = IndeedJobBasicInfoTransformer.get_job_platform_id_normalized(job_platform_id)
         company_job_platform_url = IndeedJobBasicInfoTransformer.get_company_url(company_base_url, company_job_platform_url)
         job_posted_date_formated = IndeedJobBasicInfoTransformer.get_job_posted_date_formated(job_posted_date)
-        job_url = IndeedJobBasicInfoTransformer.get_job_url(job_basic_info.job_url, job_platform_id)
+        job_url = IndeedJobBasicInfoTransformer.get_job_url(job_basic_info.url, job_platform_id)
         job_city = IndeedJobBasicInfoTransformer.get_job_city_normalized(job_city=job_city)
         is_job_remote = IndeedJobBasicInfoTransformer.is_job_remote(job_city=job_city, job_title=job_title)
         
-        job_basic_info = JobBasicInfo(job_title=job_title,job_platform_id=job_platform_id,job_posted_date=job_posted_date_formated,job_url=job_url, company_name=company_name, company_job_platform_url=company_job_platform_url, job_city=job_city, is_job_remote=is_job_remote, job_country=job_basic_info.job_country)
+        job_basic_info = JobBasicInfo(title=job_title,platform_id=job_platform_id,posted_date=job_posted_date_formated,url=job_url, company_name=company_name, company_job_platform_url=company_job_platform_url, city=job_city, is_remote=is_job_remote, country=job_basic_info.country)
         return job_basic_info
 
     @staticmethod
@@ -83,9 +83,9 @@ class IndeedJobMoreInfoTransformer(Transformer):
     @staticmethod
     async def transform(job_info: JobMoreInfo) -> JobMoreInfo:
         """Transform the more job info"""
-        job_description: str = Utils.get_text(job_info.job_description)
-        job_benefits: str = IndeedJobMoreInfoTransformer.get_job_benefits_normalized(job_info.job_benefits)
-        job_more_info = JobMoreInfo(job_description=job_description,job_benefits=job_benefits)
+        job_description: str = Utils.get_text(job_info.description)
+        job_benefits: str = IndeedJobMoreInfoTransformer.get_job_benefits_normalized(job_info.benefits)
+        job_more_info = JobMoreInfo(description=job_description,benefits=job_benefits)
         return job_more_info
 
     @staticmethod
@@ -110,9 +110,7 @@ class IndeedJobMoreInfoTransformer(Transformer):
 class IndeedJobsTransformer(DataFrameTransformer):
     @staticmethod
     def transform_df(jobs_df: pd.DataFrame):
-        jobs_df = DataFrameUtils.drop_id_column(jobs_df, "job_id")
-        jobs_df = DataFrameUtils.set_index_column_name(jobs_df, "job_id")
-        jobs_df = DataFrameUtils.shift_index_df(jobs_df, 1)
+        jobs_df = DataFrameUtils.reset_index_df(jobs_df, new_index_column_name="job_id")
         column_names = DataFrameUtils.get_column_names(jobs_df)
         normalize_text_callback = Utils.get_normalized_text
         jobs_df = DataFrameUtils.transform_columns_df(jobs_df, column_names, normalize_text_callback)
@@ -121,7 +119,7 @@ class IndeedJobsTransformer(DataFrameTransformer):
     
     @staticmethod
     def transform_job_posted_date_df(jobs_df: pd.DataFrame):
-        jobs_df["job_posted_date"] = pd.to_datetime(jobs_df["job_posted_date"], format="%Y/%m/%d")
+        jobs_df["posted_date"] = pd.to_datetime(jobs_df["posted_date"], format="%Y/%m/%d")
         return jobs_df
     
     

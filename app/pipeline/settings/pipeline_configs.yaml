@@ -2,7 +2,7 @@ data_sources:
   job_platforms:
     indeed:
       url: https://www.indeed.com
-      jobs_base_url: "https://%(country_code)s.indeed.com/jobs?q=%(job_title)s"
+      jobs_base_url: "https://%(country_code)s.indeed.com/jobs?q=%(job_title)s&sort=date"
       job_base_url: "https://www.indeed.com/viewjob?jk=%(job_id)s"
       company_base_url: "https://www.indeed.com/cmp/%(company_name)s"
       comapny_reviews_base_url: "https://www.indeed.com/cmp/%(company_name)s/reviews?fcountry=ALL"

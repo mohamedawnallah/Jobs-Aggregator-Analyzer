@@ -49,9 +49,9 @@ async def main(params: dict):
     
     
     storage_configs: dict = pipeline_configs["storage"]
-    raw_storage_path = storage_configs["raw"]["csv"]
-    staging_storage_path = storage_configs["staging"]["csv"]
-    production_storage_path = storage_configs["production"]["csv"]
+    bronze_storage_path = storage_configs["raw"]["csv"]
+    silver_storage_path = storage_configs["staging"]["csv"]
+    gold_storage_path = storage_configs["production"]["csv"]
     
     # countries: Union[Generator[Country,None,None],None] = params["countries"]
     # job_title: str = params["job_title"]
@@ -78,9 +78,13 @@ async def main(params: dict):
     # date_dimensions_etl = DateDimensionsETL(start_date, end_date, raw_storage_path, raw_storage_path)
     # date_dimensions_etl.run()
     
-    # countries_raw_path = raw_storage_path % {"file_name":"indeed_countries.csv"}
-    # countries = IndeedCountriesScrapper.get_countries_from_local(countries_raw_path)
-    # jobs_etl = IndeedJobsETL(indeed_configs, job_title, countries, pages_no, raw_storage_path, raw_storage_path)
+    # bronze_countries_path = bronze_storage_path % {"file_name":"indeed_countries.csv"}
+    # countries = IndeedCountriesScrapper.get_countries_from_local(bronze_countries_path)
+
+    # bronze_jobs_path = bronze_storage_path % {"file_name":"jobs.csv"}
+    # silver_jobs_path = silver_storage_path % {"file_name":"jobs.csv"}
+    # gold_jobs_path = gold_storage_path % {"file_name":"jobs.csv"}
+    # jobs_etl = IndeedJobsETL(indeed_configs, job_title, countries, pages_no, bronze_jobs_path, silver_jobs_path, gold_jobs_path)
     # await jobs_etl.run()
     
     # jobs_staging_path= staging_storage_path % {"file_name":"jobs.csv"}

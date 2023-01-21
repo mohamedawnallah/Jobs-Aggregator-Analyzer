@@ -15,30 +15,32 @@ class IndeedJobsETL(Extractor, Transformer, Loader, DataPipeline):
     """Indeed ETL class"""
     def __init__(self,indeed_etl_configs: dict,job_title: str,
                  countries: Generator[CountryDim,None,None],
-                 pages_no: int, staging_csv_file_path: str, production_csv_file_path: str):
+                 pages_no: int, bronze_jobs_path: str, silver_jobs_path: str,
+                gold_jobs_path: str):
         self.indeed_etl_configs = indeed_etl_configs
         self.job_title = job_title
         self.countries = countries
         self.pages_no = pages_no
-        self.file_name = "indeed_jobs.csv" 
-        self.staging_csv_file_path = staging_csv_file_path % {"file_name": self.file_name}
-        self.production_csv_file_path = production_csv_file_path % {"file_name": self.file_name}
+        self.bronze_jobs_path = bronze_jobs_path
+        self.silver_jobs_path = silver_jobs_path
+        self.gold_jobs_path = gold_jobs_path
 
     async def extract(self) -> pd.DataFrame:
         """Extract data from the Indeed Website"""
         indeed_scrapper = IndeedJobsScrapper(self.indeed_etl_configs)
         jobs_df = await indeed_scrapper.extract(self.countries, self.job_title, self.pages_no)
-        jobs_df.to_csv(self.staging_csv_file_path, index=False)
+        jobs_df.to_csv(self.bronze_jobs_path, index=False)
         return jobs_df
 
     async def transform(self, jobs_df: pd.DataFrame) -> pd.DataFrame:
         """Transform data"""
-        jobs_df = IndeedJobsTransformer.transform_df(jobs_df)
+        jobs_df: pd.DataFrame = IndeedJobsTransformer.transform_df(jobs_df)
+        jobs_df.to_csv(self.silver_jobs_path, index=False)
         return jobs_df
 
     def load(self, jobs_df: pd.DataFrame) -> bool:
         """Load data into the CSV"""
-        jobs_df.to_csv(self.production_csv_file_path)
+        jobs_df.to_csv(self.gold_jobs_path, index=False)
         return True
 
     @timer_async
